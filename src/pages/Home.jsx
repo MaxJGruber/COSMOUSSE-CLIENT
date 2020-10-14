@@ -1,6 +1,5 @@
 import React from "react";
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import NavMain from "../components/NavMain";
+import ReactMapboxGl from "react-mapbox-gl";
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,

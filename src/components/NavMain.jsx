@@ -2,6 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/NavMain.css";
 
@@ -24,27 +27,21 @@ const NavMain = (props) => {
       <NavLink exact to="/about">
         <h3 className="logo">About</h3>
       </NavLink>
-      <ul className="nav-list">
-        {context.isLoggedIn && (
-          <React.Fragment>
-            <li>
-              <NavLink to="/profile">
-                {context.user && context.user.email}
-              </NavLink>
-            </li>
-          </React.Fragment>
-        )}
-        {!context.isLoggedIn && (
-          <React.Fragment>
-            <li>
-              <NavLink to="/signin">Log in</NavLink>
-            </li>
-            <li>
-              <NavLink to="/signup">Create account</NavLink>
-            </li>
-          </React.Fragment>
-        )}
-      </ul>
+      {context.isLoggedIn && (
+        <React.Fragment>
+          <NavLink to="/profile">{context.user && context.user.email}</NavLink>
+        </React.Fragment>
+      )}
+      {!context.isLoggedIn && (
+        <React.Fragment>
+          <NavLink to="/signup">
+            <FontAwesomeIcon icon={faSignInAlt} />
+          </NavLink>
+        </React.Fragment>
+      )}
+      <NavLink to="/signup">
+        <FontAwesomeIcon icon={faClipboardList} />
+      </NavLink>
     </nav>
   );
 };

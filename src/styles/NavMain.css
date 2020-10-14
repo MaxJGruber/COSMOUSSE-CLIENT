@@ -1,9 +1,10 @@
 .NavMain {
   background-color: #8ecff4;
   color: rgb(57, 57, 57);
-  display: flex;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   height: 80px;
   width: 100%;
   position: fixed;
@@ -12,11 +13,18 @@
   bottom: 0;
 }
 
-.NavMain .nav-list {
-  margin-left: auto;
+.NavMain * {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.NavMain .nav-list li:not(:last-child) {
-  margin-right: 20px;
+.NavMain .fa-sign-in-alt {
+  width: 35px;
+  height: auto;
+}
+
+.NavMain .fa-clipboard-list {
+  width: 25px;
+  height: auto;
 }
