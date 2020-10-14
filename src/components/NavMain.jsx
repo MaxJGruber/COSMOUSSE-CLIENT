@@ -21,8 +21,8 @@ const NavMain = (props) => {
 
   return (
     <nav className="NavMain">
-      <NavLink exact to="/">
-        <h3 className="logo">App name</h3>
+      <NavLink exact to="/about">
+        <h3 className="logo">About</h3>
       </NavLink>
       <ul className="nav-list">
         {context.isLoggedIn && (
@@ -31,9 +31,6 @@ const NavMain = (props) => {
               <NavLink to="/profile">
                 {context.user && context.user.email}
               </NavLink>
-            </li>
-            <li>
-              <p onClick={handleLogout}>Logout</p>
             </li>
           </React.Fragment>
         )}
