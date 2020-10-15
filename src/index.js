@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import UserProvider from "./components/Auth/UserProvider";
 import App from "./App";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./styles/reset.css";
 import "./styles/global.css";

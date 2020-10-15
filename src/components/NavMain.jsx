@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
-import apiHandler from "../api/apiHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
@@ -11,17 +10,6 @@ import "../styles/NavMain.css";
 const NavMain = (props) => {
   const { context } = props;
 
-  function handleLogout() {
-    apiHandler
-      .logout()
-      .then(() => {
-        context.removeUser();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   return (
     <nav className="NavMain">
       <NavLink exact to="/about">
@@ -29,7 +17,13 @@ const NavMain = (props) => {
       </NavLink>
       {context.isLoggedIn && (
         <React.Fragment>
-          <NavLink to="/profile">{context.user && context.user.email}</NavLink>
+          <NavLink to="/profile">
+            <img
+              className="profileImage"
+              src={context.user.profileImage}
+              alt="you"
+            />
+          </NavLink>
         </React.Fragment>
       )}
       {!context.isLoggedIn && (
@@ -39,7 +33,7 @@ const NavMain = (props) => {
           </NavLink>
         </React.Fragment>
       )}
-      <NavLink to="/signup">
+      <NavLink to="/loglist">
         <FontAwesomeIcon icon={faClipboardList} />
       </NavLink>
     </nav>

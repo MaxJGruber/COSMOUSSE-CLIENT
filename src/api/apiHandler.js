@@ -44,9 +44,23 @@ export default {
       .catch(errorHandler);
   },
 
+  getHomePage() {
+    return service
+      .get("/")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   getItems() {
     return service
       .get("/api/items")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  updateUser(data) {
+    return service
+      .patch("/user/edit", data)
       .then((res) => res.data)
       .catch(errorHandler);
   },

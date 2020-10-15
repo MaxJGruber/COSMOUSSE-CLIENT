@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { UserContext } from "../Auth/UserContext";
 import { withRouter } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
+import "../../styles/Form.css";
 
 class FormSignin extends Component {
   static contextType = UserContext;
@@ -43,13 +44,27 @@ class FormSignin extends Component {
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" />
-        <button>Submit</button>
-      </form>
+      <div className="signup-page">
+        <div className="signup-form-container">
+          <form className="Form" onSubmit={this.handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={this.handleChange}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={this.handleChange}
+            />
+            <button>Sign In</button>
+          </form>
+        </div>
+      </div>
     );
   }
 }
