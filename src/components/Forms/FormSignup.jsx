@@ -29,9 +29,14 @@ class FormSignup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const fd = new FormData();
+
+    for (let key in this.state) {
+      fd.append(key, this.state[key]);
+    }
 
     apiHandler
-      .signup(this.state)
+      .signup(fd)
       .then((data) => {
         this.context.setUser(data);
         this.props.history.push("/");

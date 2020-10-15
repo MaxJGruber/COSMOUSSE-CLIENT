@@ -44,23 +44,30 @@ export default {
       .catch(errorHandler);
   },
 
-  getHomePage() {
+  getItems(endPoint) {
     return service
-      .get("/")
+      .get(endPoint)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-  getItems() {
+  updateUser(endPoint, data) {
     return service
-      .get("/api/items")
+      .patch(endPoint, data)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-  updateUser(data) {
+  deleteUser(endPoint) {
     return service
-      .patch("/user/edit", data)
+      .delete(endPoint)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  createOne(endPoint, data) {
+    return service
+      .post(endPoint, data)
       .then((res) => res.data)
       .catch(errorHandler);
   },

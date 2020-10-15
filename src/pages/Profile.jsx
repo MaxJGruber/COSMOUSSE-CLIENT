@@ -35,13 +35,24 @@ class Profile extends React.Component {
 
   handleEdit = (event) => {
     event.preventDefault();
-    API.updateUser(this.state)
+    const fd = new FormData();
+
+    for (let key in this.state) {
+      fd.append(key, this.state[key]);
+    }
+    API.updateUser(fd)
       .then((dbRes) => console.log(dbRes))
       .catch((error) => console.log(error));
   };
 
+  deleteAccount = (event) => {
+    event.preventDefault();
+    API.deleteUser("/user/delete")
+      .then((dbRes) => this.context.removeUser())
+      .catch((error) => console.log(error));
+  };
+
   render() {
-    console.log(this.context);
     return (
       <div className="signup-page">
         <div className="signup-form-container">
@@ -71,7 +82,7 @@ class Profile extends React.Component {
               Check Logs
             </Link>
             <div className="option-btns">
-              <button id="delete">
+              <button id="delete" onClick={this.deleteAccount}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </button>
               <button id="save" onClick={this.handleEdit}>

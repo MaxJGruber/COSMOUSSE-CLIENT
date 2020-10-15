@@ -1,7 +1,7 @@
 .signup-page {
   background-color: #aeeffd;
   background-size: cover;
-  height: 100vh;
+  margin: 10% auto;
   padding-top: 100px;
 }
 
@@ -19,10 +19,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: 50px auto; */
+  padding-bottom: 100px;
   /* margin: 40px 5px 0 5px; */
   bottom: 0;
   height: 100%;
+  margin-bottom: auto;
+  overflow: scroll;
 }
 
 .Form .title {
@@ -62,3 +64,40 @@
   color: black;
 }
 
+.form-group .input {
+  margin: 8px 0 12px;
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  border: none;
+  font-size: 14px;
+  background: #eff1f6;
+  padding: 12px 12px;
+}
+
+.form-group .input-error {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: rgb(255, 192, 192);
+  color: rgb(255, 34, 34);
+}
+
+.form-group .text-area {
+  display: block;
+  font-size: 14px;
+  width: 100%;
+  background: #eff1f6;
+  border: none;
+  border-radius: 4px;
+  line-height: 1.3;
+  resize: none;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Manrope", sans-serif;
+}
+
+.form-group .label {
+  font-weight: 600;
+}
