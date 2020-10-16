@@ -65,6 +65,7 @@ class AutocompletePlace extends Component {
   }
 
   render() {
+    console.log(this.props.coordinates);
     const { results, isLoading } = this.state;
     return (
       <div className="AutocompletePlace">

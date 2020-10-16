@@ -102,7 +102,10 @@ export class ItemForm extends Component {
               <label className="label" htmlFor="location">
                 Address
               </label>
-              <AutoComplete onSelect={this.handlePlace} />
+              <AutoComplete
+                onSelect={this.handlePlace}
+                coordinates={this.props.coordinates}
+              />
             </div>
             <label htmlFor="price">Price</label>
             <input type="number" id="price" name="price" />

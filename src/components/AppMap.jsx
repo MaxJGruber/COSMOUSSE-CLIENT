@@ -46,18 +46,19 @@ class AppMap extends React.PureComponent {
   // handleTarget = (e) => {
   //   console.log(e.location);
   // };
-  _onClickMap = (map, evt) => {
-    console.log(evt.lngLat);
-    var coordinates = evt.lngLat;
-    console.log(coordinates.lat, coordinates.lng);
-    this.setState({
-      selectedLng: coordinates.lng,
-      selectedLat: coordinates.lat,
-    });
-    this.props.history.push("/item");
-  };
+  // _onClickMap = (map, evt) => {
+  //   console.log(evt.lngLat);
+  //   var coordinates = evt.lngLat;
+  //   console.log(coordinates.lat, coordinates.lng);
+  //   this.setState({
+  //     selectedLng: coordinates.lng,
+  //     selectedLat: coordinates.lat,
+  //   });
+  // this.props.history.push("/");
+  // };
 
   render() {
+    console.log(">>>>>>>>>>", this.props);
     const beerLayer = (
       <Layer
         type="symbol"
@@ -99,8 +100,9 @@ class AppMap extends React.PureComponent {
           position: "absolute",
         }}
         center={[this.state.lng, this.state.lat]}
-        onClick={this._onClickMap}
-        selectedCoordinates={[this.state.selectedLng, this.state.selectedLat]}
+        // onClick={(p1,p2) => console.log(p1,p2)}
+        onClick={(p1, p2) => this.props.onClickMap(p1, p2)}
+        // selectedCoordinates={[this.state.selectedLng, this.state.selectedLat]}
       >
         {beerLayer}
         {/* {CustomPopup()} */}

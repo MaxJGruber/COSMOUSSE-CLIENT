@@ -12,13 +12,9 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <AppMap
-          items={this.state.items}
-          selectedCoordinates={this.props.coordinates}
-        />
+        <AppMap items={this.state.items} onClickMap={this.props.onClickMap} />
       </div>
     );
   }

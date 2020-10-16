@@ -8,21 +8,47 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import LogList from "./pages/Loglist";
 import ItemForm from "./components/Forms/ItemForm";
+import { withRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/signin" component={Signin} />
-        <Route exact path="/signup" component={Signup} />
-        <ProtectedRoute exact path="/profile" component={Profile} />
-        <Route exact path="/loglist" component={LogList} />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/item" component={ItemForm} />
-      </Switch>
-      <NavMain />
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    coordinates: [],
+  };
+
+  _onClickMap = (map, evt) => {
+    console.log("EVENT!!!!!", evt.lngLat);
+    console.log("map!!!!!", map);
+    var coordinates = evt.lngLat;
+    console.log(coordinates.lat, coordinates.lng);
+    this.setState({
+      coordinates: [coordinates.lng, coordinates.lat],
+    });
+    this.props.history.push("/item");
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path="/signin" component={Signin} />
+          <Route exact path="/signup" component={Signup} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
+          <Route exact path="/loglist" component={LogList} />
+          <Route
+            exact
+            path="/"
+            component={() => <Home onClickMap={this._onClickMap} />}
+          />
+          <Route
+            exact
+            path="/item"
+            component={() => <ItemForm coordinates={this.state.coordinates} />}
+          />
+        </Switch>
+        <NavMain />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
