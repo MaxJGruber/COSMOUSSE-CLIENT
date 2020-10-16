@@ -7,7 +7,7 @@ const LogElement = () => {
   return (
     <div>
       <div className="LogElement">
-        <h3>Beer Name</h3>
+        <h3>{this.props.name}</h3>
         <button id="edit">
           <FontAwesomeIcon icon={faEdit} />
         </button>

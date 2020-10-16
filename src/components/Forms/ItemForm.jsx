@@ -5,9 +5,11 @@ import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { buildFormData } from "../../utils";
+import { UserContext } from "../Auth/UserContext";
 import "../../styles/Form.css";
 
 export class ItemForm extends Component {
+  static contextType = UserContext;
   state = {
     name: "",
     brand: "",
@@ -15,14 +17,14 @@ export class ItemForm extends Component {
     rating: null,
     location: "",
     description: "",
-    isCraft: null,
+    isCraft: false,
     image: "",
+    added_by: "",
   };
 
   handlePlace = (place) => {
     const location = place.geometry;
     location.formattedAddress = place.place_name;
-    console.log(">>>>>", location);
     this.setState({ location });
   };
 
@@ -44,30 +46,27 @@ export class ItemForm extends Component {
     event.preventDefault();
 
     if (!this.state.type) {
-      this.setState({ error: "No category selected !" }, () => {
+      this.setState({ error: "No type selected !" }, () => {
         this.timeoutId = setTimeout(() => {
           this.setState({ error: null });
         }, 1000);
       });
       return;
     }
-    const fd = new FormData();
 
-    // for (let key in this.state) {
-    //   fd.append(key, this.state[key]);
-    // }
+    const fd = new FormData();
     buildFormData(fd, this.state);
 
     API.createOne("/item/create", fd)
       .then((dbRes) => {
-        console.log(dbRes);
         this.props.history.push("/");
       })
       .catch((error) => console.log(error));
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.context);
+    console.log(">>>>>", this.props);
     return (
       <div className="signup-page">
         <div className="signup-form-container">
@@ -105,6 +104,10 @@ export class ItemForm extends Component {
               </label>
               <AutoComplete onSelect={this.handlePlace} />
             </div>
+            <label htmlFor="price">Price</label>
+            <input type="number" id="price" name="price" />
+            <label htmlFor="priceHH">Happy Hour Price</label>
+            <input type="number" id="priceHH" name="priceHH" />
             <div className="form-group">
               <label className="label" htmlFor="rating">
                 Rating
@@ -116,6 +119,7 @@ export class ItemForm extends Component {
               <input type="radio" name="rating" value="4" />4
               <input type="radio" name="rating" value="5" />5
             </div>
+
             <label className="label" htmlFor="description">
               Description
             </label>

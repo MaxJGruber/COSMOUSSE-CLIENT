@@ -28,7 +28,7 @@ const NavMain = (props) => {
       )}
       {!context.isLoggedIn && (
         <React.Fragment>
-          <NavLink to="/signup">
+          <NavLink to="/signin">
             <FontAwesomeIcon icon={faSignInAlt} />
           </NavLink>
         </React.Fragment>

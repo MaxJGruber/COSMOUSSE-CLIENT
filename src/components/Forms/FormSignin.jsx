@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import { withRouter } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
@@ -62,6 +62,12 @@ class FormSignin extends Component {
               onChange={this.handleChange}
             />
             <button>Sign In</button>
+            <p>
+              Don't have an account ?
+              <Link className="link" to="/signup">
+                Sign Up
+              </Link>
+            </p>
           </form>
         </div>
       </div>
