@@ -4,6 +4,7 @@ import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
 import "../../styles/Form.css";
+import "../../styles/FormSignUp.css";
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -48,8 +49,8 @@ class FormSignup extends Component {
 
   render() {
     return (
-      <div className="signup-page">
-        <div className="signup-form-container">
+      <div className="background-form">
+        <div className="form-container">
           <form className="Form" onSubmit={this.handleSubmit}>
             <label htmlFor="profileImage">Profile Image</label>
             <input
@@ -94,7 +95,7 @@ class FormSignup extends Component {
               onChange={this.handleChange}
             />
             <button>Create Account</button>
-            <p>
+            <p className="question">
               Already have an account ?{" "}
               <Link className="link" to="/signin">
                 Signin

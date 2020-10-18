@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../styles/AutoComplete.css";
+import "../styles/Form.css";
 
 /*
  *  Thanks to @mc100s for this component

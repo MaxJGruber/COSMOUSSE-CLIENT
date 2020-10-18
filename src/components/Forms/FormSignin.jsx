@@ -44,8 +44,8 @@ class FormSignin extends Component {
 
   render() {
     return (
-      <div className="signup-page">
-        <div className="signup-form-container">
+      <div className="background-form signin">
+        <div className="form-container">
           <form className="Form" onSubmit={this.handleSubmit}>
             <label htmlFor="email">Email</label>
             <input
@@ -62,8 +62,8 @@ class FormSignin extends Component {
               onChange={this.handleChange}
             />
             <button>Sign In</button>
-            <p>
-              Don't have an account ?
+            <p className="question">
+              Don't have an account?{" "}
               <Link className="link" to="/signup">
                 Sign Up
               </Link>

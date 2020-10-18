@@ -1,16 +1,43 @@
-.signup-page {
+.background-form {
   background-color: #aeeffd;
-  background-size: cover;
-  margin: 10% auto;
-  padding-top: 100px;
+  /* background-size: cover; */
+  padding-top: 65px;
+  height: 800px;
 }
 
-.signup-form-container {
+/* FOR ITEM FORM  */
+
+.background-item-form {
+  background-color: #aeeffd;
+  /* background-size: cover; */
+  /* padding: 65px 0; */
+  /* height: 800px; */
+  padding: 100px 10px 100px 10px;
+  /* margin: 5% auto; */
+}
+
+.signin {
+  padding-top: 350px;
+}
+
+.form-container {
   background-color: #ededed;
   border-radius: 1rem;
   /* padding: 5% auto; */
-  margin: 5% auto;
-  width: 75%;
+  margin: 10% auto;
+  width: 85%;
+  padding: 10px;
+}
+
+/* FOR ITEM FORM  */
+
+.item-form-container {
+  /* padding-bottom: 100px; */
+  background-color: #ededed;
+  border-radius: 1rem;
+  /* padding: 5% auto; */
+  margin: auto;
+  width: 85%;
   padding: 10px;
 }
 
@@ -19,12 +46,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
   /* margin: 40px 5px 0 5px; */
   bottom: 0;
   height: 100%;
   margin-bottom: auto;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .Form .title {
@@ -41,6 +68,18 @@
   border-radius: 2em;
   width: 90%;
   /* align-items: center; */
+}
+
+.Form .link {
+  color: dodgerblue;
+}
+
+.Form .link:hover {
+  color: purple;
+}
+
+.Form .question {
+  margin-top: 10px;
 }
 
 .Form label {
@@ -64,25 +103,52 @@
   color: black;
 }
 
-.form-group .input {
-  margin: 8px 0 12px;
+.form-group {
+  text-align: center;
+}
+
+.price-container .price {
+  width: 10%;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-over-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratings-over-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.ratings-over-container div {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  margin-top: 10px;
+}
+
+.input {
+  /* margin: 8px 0 12px; */
   width: 100%;
   border-radius: 4px;
-  display: block;
   border: none;
   font-size: 14px;
   background: #eff1f6;
-  padding: 12px 12px;
+  /* padding: 12px 12px; */
 }
 
-.form-group .input-error {
-  padding: 8px 16px;
-  border-radius: 4px;
-  background-color: rgb(255, 192, 192);
-  color: rgb(255, 34, 34);
-}
-
-.form-group .text-area {
+textarea {
   display: block;
   font-size: 14px;
   width: 100%;
@@ -92,10 +158,11 @@
   line-height: 1.3;
   resize: none;
   box-sizing: border-box;
-  padding: 12px;
+  /* padding: 12px; */
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: "Manrope", sans-serif;
+  border: 1px solid black;
 }
 
 .form-group .label {

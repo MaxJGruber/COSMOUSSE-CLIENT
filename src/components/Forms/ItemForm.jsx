@@ -68,18 +68,18 @@ export class ItemForm extends Component {
     console.log(this.context);
     console.log(">>>>>", this.props);
     return (
-      <div className="signup-page">
-        <div className="signup-form-container">
+      <div className="background-item-form">
+        <div className="item-form-container ">
           <form className="Form" onChange={this.handleChange}>
-            <label htmlFor="image">Image</label>
-            <input type="file" id="image" name="image" />
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" />
-            <label htmlFor="brand">Brand</label>
-            <input type="text" id="brand" name="brand" />
             <div className="form-group">
+              <label htmlFor="image">Image</label>
+              <input type="file" id="image" name="image" />
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" />
+              <label htmlFor="brand">Brand</label>
+              <input type="text" id="brand" name="brand" />
               <label className="label" htmlFor="type">
-                Type
+                Type{"  "}
               </label>
               <select name="type" id="type" defaultValue="-1">
                 <option value="-1" disabled>
@@ -93,12 +93,9 @@ export class ItemForm extends Component {
                 <option value="wheat beer">Wheat</option>
                 <option value="other">Other</option>
               </select>
-            </div>
-            <div className="form-group">
+              <br></br>
               <label htmlFor="isCraft">Is it a Craft Beer?</label>
               <input type="checkbox" name="isCraft" id="isCraft" />
-            </div>
-            <div className="form-group">
               <label className="label" htmlFor="location">
                 Address
               </label>
@@ -106,31 +103,95 @@ export class ItemForm extends Component {
                 onSelect={this.handlePlace}
                 coordinates={this.props.coordinates}
               />
-            </div>
-            <label htmlFor="price">Price</label>
-            <input type="number" id="price" name="price" />
-            <label htmlFor="priceHH">Happy Hour Price</label>
-            <input type="number" id="priceHH" name="priceHH" />
-            <div className="form-group">
+              <div className="price-over-container">
+                <div className="price-container">
+                  <label htmlFor="price">Normal Price</label>
+                  <input
+                    type="number"
+                    id="price"
+                    className="price"
+                    name="price"
+                  />
+                </div>
+                <div className="price-container">
+                  <label htmlFor="priceHH">Happy Hour Price</label>
+                  <input
+                    type="number"
+                    id="priceHH"
+                    className="price"
+                    name="priceHH"
+                  />
+                </div>
+              </div>
               <label className="label" htmlFor="rating">
                 Rating
               </label>
-              <input type="radio" name="rating" value="0" />0
-              <input type="radio" name="rating" value="1" />1
-              <input type="radio" name="rating" value="2" />2
-              <input type="radio" name="rating" value="3" />3
-              <input type="radio" name="rating" value="4" />4
-              <input type="radio" name="rating" value="5" />5
+              <div className="ratings-over-container">
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="0"
+                  />
+                  0
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="1"
+                  />
+                  1
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="2"
+                  />
+                  2
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="3"
+                  />
+                  3
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="4"
+                  />
+                  4
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    className="rate"
+                    name="rating"
+                    value="5"
+                  />
+                  5
+                </div>
+              </div>
+              <br></br>
+              <label className="label" htmlFor="description">
+                Description
+              </label>
+              <textarea type="text" id="description" name="description" />
             </div>
-
-            <label className="label" htmlFor="description">
-              Description
-            </label>
-            <textarea type="text" id="description" name="description" />
             <div className="option-btns">
               <button id="delete" onClick={this.deleteItem}>
                 <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
+              </button>{" "}
               <button id="save" onClick={this.handleSubmit}>
                 Save Changes
               </button>
