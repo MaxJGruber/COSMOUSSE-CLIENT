@@ -1,6 +1,7 @@
 import React from "react";
 import AppMap from "../components/AppMap";
 import API from "../api/apiHandler";
+import NavMain from "../components/NavMain";
 
 class Home extends React.Component {
   state = { items: [] };
@@ -15,6 +16,7 @@ class Home extends React.Component {
     return (
       <div>
         <AppMap items={this.state.items} onClickMap={this.props.onClickMap} />
+        <NavMain page="home" />
       </div>
     );
   }

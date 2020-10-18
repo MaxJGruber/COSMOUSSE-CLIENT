@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import API from "../api/apiHandler";
+import NavMain from "../components/NavMain";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -54,8 +55,8 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div className="signup-page">
-        <div className="signup-form-container">
+      <div className="background-form edit">
+        <div className="form-container">
           <form className="Form">
             <label htmlFor="profileImage">Profile Image</label>
             <input
@@ -79,22 +80,23 @@ class Profile extends React.Component {
               onChange={this.handleChange}
             />
             <Link to="/loglist" id="logs">
-              Check Logs
+              <button>Check Logs</button>
             </Link>
+            <br />
             <div className="option-btns">
               <button id="delete" onClick={this.deleteAccount}>
                 <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
+              </button>{" "}
               <button id="save" onClick={this.handleEdit}>
                 Save Changes
-              </button>
-
+              </button>{" "}
               <button id="logout" onClick={this.sessionLogout}>
                 <FontAwesomeIcon icon={faSignOutAlt} />
               </button>
             </div>
           </form>
         </div>
+        <NavMain page="edit-profile" />
       </div>
     );
   }
