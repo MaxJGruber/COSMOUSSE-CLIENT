@@ -18,16 +18,25 @@ class Loglist extends React.Component {
       .catch((error) => console.log(error));
   };
 
-  // deleteItem = () => {
-
-  // }
+  deleteItem = (id) => {
+    console.log(id);
+    API.deleteOne(`/item/${id}/delete`)
+      .then(this.componentDidMount)
+      .catch((error) => console.log(error));
+  };
 
   render() {
     return (
       <div>
         {this.state.items.map((item, i) => {
           console.log(item.name);
-          return <LogElement name={item.name} />;
+          return (
+            <LogElement
+              name={item.name}
+              id={item._id}
+              deleteItem={this.deleteItem}
+            />
+          );
         })}
         <NavMain page="loglist" />
       </div>

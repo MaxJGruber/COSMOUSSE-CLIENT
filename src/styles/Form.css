@@ -112,7 +112,7 @@
 }
 
 .price-container .price {
-  width: 10%;
+  width: 40px;
 }
 
 .price-container {
@@ -120,11 +120,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 5px;
 }
 
 .price-over-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .ratings-over-container {

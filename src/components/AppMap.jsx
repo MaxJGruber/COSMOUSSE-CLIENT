@@ -1,6 +1,7 @@
 import React from "react";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { withRouter } from "react-router-dom";
+// import { usePosition } from 'use-position';
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
@@ -14,15 +15,15 @@ class AppMap extends React.PureComponent {
     lng: 2.349014, // Default lng and lat set to the center of paris.
     lat: 48.864716,
     zoom: 12, // used for map zoom level
-    selectedLng: null,
-    selectedLat: null,
   };
 
   componentDidMount() {
     // Get users geo location and set it as the state so the map centers relative to the users current location. :)
     const success = (position) => {
+      console.log("hello");
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
+      console.log(latitude, longitude);
       this.setState({ lat: latitude, lng: longitude });
     };
 
@@ -30,17 +31,17 @@ class AppMap extends React.PureComponent {
       console.log("An error occured geolocating user");
     };
 
+    // console.log(navigator.geolocation.getCurrentPosition);
     if (!navigator.geolocation) {
       console.log("Geolocation not supported");
     } else {
+      console.log("Geolocation permitted");
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }
 
   handleClick = (selectedItem) => {
-    console.log(selectedItem);
-    // Pass the selectedItem back to the parent.
-    // this.props.handleSelectItem(selectedItem);
+    console.log("########", selectedItem._id);
   };
 
   // handleTarget = (e) => {
@@ -58,7 +59,7 @@ class AppMap extends React.PureComponent {
   // };
 
   render() {
-    console.log(">>>>>>>>>>", this.props);
+    // console.log(">>>>>>>>>>", this.props);
     const beerLayer = (
       <Layer
         type="symbol"
@@ -69,7 +70,8 @@ class AppMap extends React.PureComponent {
         {this.props.items.map((item, index) => (
           <Feature
             key={index}
-            onClick={(event) => this.handleClick(item)}
+            id={item._id}
+            onClick={() => this.handleClick(item)}
             coordinates={item.location.coordinates}
           />
         ))}

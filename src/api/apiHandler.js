@@ -51,6 +51,13 @@ export default {
       .catch(errorHandler);
   },
 
+  getOneItem(endPoint) {
+    return service
+      .get(endPoint)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   updateUser(endPoint, data) {
     return service
       .patch(endPoint, data)
@@ -68,6 +75,20 @@ export default {
   createOne(endPoint, data) {
     return service
       .post(endPoint, data)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteOne(endPoint) {
+    return service
+      .delete(endPoint)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  updateOne(endPoint, data) {
+    return service
+      .patch(endPoint, data)
       .then((res) => res.data)
       .catch(errorHandler);
   },

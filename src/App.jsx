@@ -7,8 +7,11 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import LogList from "./pages/Loglist";
-import ItemForm from "./components/Forms/ItemForm";
+// import ItemForm from "./components/Forms/ItemForm";
+import ItemCreate from "./pages/ItemCreate";
+import ItemEdit from "./pages/ItemEdit";
 import { withRouter } from "react-router-dom";
+
 
 class App extends React.Component {
   state = {
@@ -16,14 +19,14 @@ class App extends React.Component {
   };
 
   _onClickMap = (map, evt) => {
-    console.log("EVENT!!!!!", evt.lngLat);
-    console.log("map!!!!!", map);
+    // console.log("EVENT!!!!!", evt.lngLat);
+    // console.log("map!!!!!", map);
     var coordinates = evt.lngLat;
     console.log(coordinates.lat, coordinates.lng);
     this.setState({
       coordinates: [coordinates.lng, coordinates.lat],
     });
-    this.props.history.push("/item");
+    this.props.history.push("/item/create");
   };
 
   render() {
@@ -39,13 +42,20 @@ class App extends React.Component {
             path="/"
             component={() => <Home onClickMap={this._onClickMap} />}
           />
-          <Route
+          {/* <Route
             exact
             path="/item"
             component={() => <ItemForm coordinates={this.state.coordinates} />}
+          /> */}
+          <Route
+            exact
+            path="/item/create"
+            component={() => (
+              <ItemCreate coordinates={this.state.coordinates} />
+            )}
           />
+          <Route exact path="/item/:id/editpage" component={ItemEdit} />
         </Switch>
-    
       </div>
     );
   }

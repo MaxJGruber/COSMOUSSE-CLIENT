@@ -20,7 +20,34 @@ export class ItemForm extends Component {
     isCraft: false,
     image: "",
     added_by: "",
+    price: null,
+    priceHH: null,
   };
+
+  componentDidMount() {
+    if (this.props.action === "edit") {
+      API.getOneItem(`/item/${this.props.id}`)
+        .then((apiRes) => {
+          const item = apiRes;
+          console.log(item);
+          this.setState({
+            name: item.name,
+            brand: item.brand,
+            type: item.type,
+            rating: item.rating,
+            location: item.location,
+            description: item.description,
+            isCraft: item.isCraft,
+            image: item.image,
+            price: item.price,
+            priceHH: item.priceHH,
+          });
+        })
+        .catch((apiErr) => {
+          console.log(apiErr);
+        });
+    }
+  }
 
   handlePlace = (place) => {
     const location = place.geometry;
@@ -44,7 +71,14 @@ export class ItemForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.props.action === "edit") {
+      this.updateItem();
+    } else {
+      this.createItem();
+    }
+  };
 
+  createItem = () => {
     if (!this.state.type) {
       this.setState({ error: "No type selected !" }, () => {
         this.timeoutId = setTimeout(() => {
@@ -64,20 +98,47 @@ export class ItemForm extends Component {
       .catch((error) => console.log(error));
   };
 
+  updateItem = () => {
+    const fd = new FormData();
+    buildFormData(fd, this.state);
+    API.updateOne(`/item/${this.props.id}/edit`, fd)
+      .then((dbRes) => {
+        this.props.history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
-    console.log(this.context);
-    console.log(">>>>>", this.props);
+    // console.log(this.context);
+    // console.log(">>>>>", this.props);
     return (
       <div className="background-item-form">
         <div className="item-form-container ">
           <form className="Form" onChange={this.handleChange}>
             <div className="form-group">
               <label htmlFor="image">Image</label>
-              <input type="file" id="image" name="image" />
+              <input
+                type="file"
+                id="image"
+                name="image"
+                defaultValue={this.state.image}
+              />
               <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                defaultValue={this.state.name}
+              />
               <label htmlFor="brand">Brand</label>
-              <input type="text" id="brand" name="brand" />
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                defaultValue={this.state.brand}
+              />
               <label className="label" htmlFor="type">
                 Type{"  "}
               </label>
@@ -95,13 +156,19 @@ export class ItemForm extends Component {
               </select>
               <br></br>
               <label htmlFor="isCraft">Is it a Craft Beer?</label>
-              <input type="checkbox" name="isCraft" id="isCraft" />
+              <input
+                type="checkbox"
+                name="isCraft"
+                id="isCraft"
+                defaultValue={this.state.isCraft}
+              />
               <label className="label" htmlFor="location">
                 Address
               </label>
               <AutoComplete
                 onSelect={this.handlePlace}
                 coordinates={this.props.coordinates}
+                defaultValue={this.state.location}
               />
               <div className="price-over-container">
                 <div className="price-container">
@@ -111,6 +178,7 @@ export class ItemForm extends Component {
                     id="price"
                     className="price"
                     name="price"
+                    defaultValue={this.state.price}
                   />
                 </div>
                 <div className="price-container">
@@ -120,6 +188,7 @@ export class ItemForm extends Component {
                     id="priceHH"
                     className="price"
                     name="priceHH"
+                    defaultValue={this.state.priceHH}
                   />
                 </div>
               </div>
@@ -186,7 +255,12 @@ export class ItemForm extends Component {
               <label className="label" htmlFor="description">
                 Description
               </label>
-              <textarea type="text" id="description" name="description" />
+              <textarea
+                type="text"
+                id="description"
+                name="description"
+                defaultValue={this.state.description}
+              />
             </div>
             <div className="option-btns">
               <button id="delete" onClick={this.deleteItem}>

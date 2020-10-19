@@ -10,7 +10,7 @@ import "../styles/NavMain.css";
 
 const NavMain = (props) => {
   const { context } = props;
-  console.log(props.page);
+  // console.log(props.page);
   switch (props.page) {
     case "loglist":
       return (
