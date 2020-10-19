@@ -12,6 +12,21 @@ class Profile extends React.Component {
   state = {
     firstName: "",
     lastName: "",
+    profileImage: "",
+  };
+
+  componentDidMount() {
+    this.setState({
+      firstName: this.context.user.firstName,
+      lastName: this.context.user.lastName,
+      profileImage: this.context.user.profileImage,
+    });
+  }
+
+  handlePlace = (place) => {
+    const location = place.geometry;
+    location.formattedAddress = place.place_name;
+    this.setState({ location });
   };
 
   sessionLogout = () => {
@@ -54,10 +69,12 @@ class Profile extends React.Component {
   };
 
   render() {
+    console.log(this.context);
     return (
       <div className="background-form edit">
         <div className="form-container">
           <form className="Form">
+            <img src={this.state.profileImage} alt="profile-pic" />
             <label htmlFor="profileImage">Profile Image</label>
             <input
               type="file"
@@ -70,6 +87,7 @@ class Profile extends React.Component {
               type="text"
               id="firstName"
               name="firstName"
+              defaultValue={this.state.firstName}
               onChange={this.handleChange}
             />
             <label htmlFor="lastName">Last Name</label>
@@ -77,6 +95,7 @@ class Profile extends React.Component {
               type="text"
               id="lastName"
               name="lastName"
+              defaultValue={this.state.lastName}
               onChange={this.handleChange}
             />
             <Link to="/loglist" id="logs">

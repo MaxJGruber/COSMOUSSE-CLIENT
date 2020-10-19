@@ -31,34 +31,29 @@ class AppMap extends React.PureComponent {
       console.log("An error occured geolocating user");
     };
 
-    // console.log(navigator.geolocation.getCurrentPosition);
+    navigator.geolocation.getCurrentPosition(
+      function () {},
+      function () {}
+    );
     if (!navigator.geolocation) {
       console.log("Geolocation not supported");
     } else {
       console.log("Geolocation permitted");
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition(success, error, {
+        enableHighAccuracy: true,
+        timeout: 10000,
+      });
     }
   }
 
-  handleClick = (selectedItem) => {
-    console.log("########", selectedItem._id);
-  };
-
-  // handleTarget = (e) => {
-  //   console.log(e.location);
-  // };
-  // _onClickMap = (map, evt) => {
-  //   console.log(evt.lngLat);
-  //   var coordinates = evt.lngLat;
-  //   console.log(coordinates.lat, coordinates.lng);
-  //   this.setState({
-  //     selectedLng: coordinates.lng,
-  //     selectedLat: coordinates.lat,
-  //   });
-  // this.props.history.push("/");
+  // handleClick = (selectedItem) => {
+  //   console.log("########", selectedItem._id);
   // };
 
   render() {
+    // console.log(this.props.items);
+    // console.log(this.state.lat, this.state.lng);
+    // console.log(this.props.items[0].location.coordinates);
     // console.log(">>>>>>>>>>", this.props);
     const beerLayer = (
       <Layer
@@ -70,24 +65,31 @@ class AppMap extends React.PureComponent {
         {this.props.items.map((item, index) => (
           <Feature
             key={index}
+            properties={{ ...item }}
             id={item._id}
-            onClick={() => this.handleClick(item)}
+            // onClick={() => this.handleClick(item)}
             coordinates={item.location.coordinates}
           />
         ))}
       </Layer>
     );
-    // const CustomPopup = () => {
-    //   return (
-    //     <Popup
-    //       latitude={this.state.selectedLat}
-    //       longitude={this.state.selectedLng}
-    //       closeButton={true}
-    //       closeOnClick={false}
-    //       offsetTop={-30}
-    //     ></Popup>
-    //   );
-    // };
+
+    // const userLayer = (
+    //   <Layer
+    //     type="symbol"
+    //     id="beers"
+    //     images={["user-icon", beerImg]}
+    //     layout={{ "icon-image": "user-icon" }}
+    //   >
+    //     <Feature
+    //       // properties={this.state}
+    //       // id={item._id}
+    //       // onClick={() => this.handleClick(item)}
+    //       coordinates={[this.state.lng, this.state.lat]}
+    //     />
+    //     ))
+    //   </Layer>
+    // );
 
     return (
       <Map
@@ -107,7 +109,7 @@ class AppMap extends React.PureComponent {
         // selectedCoordinates={[this.state.selectedLng, this.state.selectedLat]}
       >
         {beerLayer}
-        {/* {CustomPopup()} */}
+        {/* {userLayer} */}
       </Map>
     );
   }

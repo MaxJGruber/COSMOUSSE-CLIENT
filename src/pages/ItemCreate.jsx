@@ -5,8 +5,8 @@ import NavMain from "../components/NavMain";
 const ItemCreate = (props) => {
   return (
     <div>
-      <ItemForm />
-      <NavMain />
+      <ItemForm coordinates={props.coordinates} />
+      <NavMain page="item"/>
     </div>
   );
 };

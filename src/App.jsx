@@ -12,21 +12,30 @@ import ItemCreate from "./pages/ItemCreate";
 import ItemEdit from "./pages/ItemEdit";
 import { withRouter } from "react-router-dom";
 
-
 class App extends React.Component {
   state = {
     coordinates: [],
+    selectedItem: "",
   };
 
   _onClickMap = (map, evt) => {
     // console.log("EVENT!!!!!", evt.lngLat);
     // console.log("map!!!!!", map);
-    var coordinates = evt.lngLat;
-    console.log(coordinates.lat, coordinates.lng);
-    this.setState({
-      coordinates: [coordinates.lng, coordinates.lat],
-    });
-    this.props.history.push("/item/create");
+    const features = map.queryRenderedFeatures(evt.point);
+    console.log(features[0], "featurres");
+    if (features[0] === undefined) {
+      console.log("You can't place anything here!");
+    } else if (features[0].source === "beers") {
+      console.log("It's a beer!");
+      console.log(features[0].properties._id);
+      this.setState({ selectedItem: features[0].properties._id });
+      this.props.history.push(`/item/${features[0].properties._id}/editpage`);
+    } else {
+      console.log("MAP!");
+      console.log("EVENT!!!!!", evt.lngLat);
+      this.setState({ coordinates: [evt.lngLat.lng, evt.lngLat.lat] });
+      this.props.history.push(`/item/create`);
+    }
   };
 
   render() {
@@ -42,11 +51,12 @@ class App extends React.Component {
             path="/"
             component={() => <Home onClickMap={this._onClickMap} />}
           />
-          {/* <Route
+          <Route
             exact
-            path="/item"
-            component={() => <ItemForm coordinates={this.state.coordinates} />}
-          /> */}
+            path="/item/:id/editpage"
+            component={ItemEdit}
+            id={this.state.selectedItem}
+          />
           <Route
             exact
             path="/item/create"
@@ -54,7 +64,6 @@ class App extends React.Component {
               <ItemCreate coordinates={this.state.coordinates} />
             )}
           />
-          <Route exact path="/item/:id/editpage" component={ItemEdit} />
         </Switch>
       </div>
     );

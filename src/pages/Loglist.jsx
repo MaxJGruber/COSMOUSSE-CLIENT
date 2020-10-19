@@ -32,6 +32,7 @@ class Loglist extends React.Component {
           console.log(item.name);
           return (
             <LogElement
+              key={i}
               name={item.name}
               id={item._id}
               deleteItem={this.deleteItem}

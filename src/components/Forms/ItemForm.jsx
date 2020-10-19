@@ -116,15 +116,11 @@ export class ItemForm extends Component {
     return (
       <div className="background-item-form">
         <div className="item-form-container ">
+          <img src={this.state.image} alt="" />
           <form className="Form" onChange={this.handleChange}>
             <div className="form-group">
               <label htmlFor="image">Image</label>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                defaultValue={this.state.image}
-              />
+              <input type="file" id="image" name="image" />
               <label htmlFor="name">Name</label>
               <input
                 type="text"

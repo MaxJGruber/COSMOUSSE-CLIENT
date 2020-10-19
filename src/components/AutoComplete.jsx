@@ -19,7 +19,24 @@ class AutocompletePlace extends Component {
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
-
+  componentDidMount = () => {
+    if (this.props.coordinates === undefined) {
+      return;
+    } else {
+      axios
+        .get(
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.coordinates[0]},${this.props.coordinates[1]}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
+        )
+        .then((response) => {
+          console.log(response.data);
+          console.log(response.data.features);
+          this.setState({
+            search: response.data.features[0].place_name,
+            isLoading: false,
+          });
+        });
+    }
+  };
   handleSearchChange(e) {
     this.setState({
       search: e.target.value,
@@ -66,7 +83,7 @@ class AutocompletePlace extends Component {
   }
 
   render() {
-    console.log(this.props.defaultValue.formattedAddress);
+    console.log(this.props.coordinates);
     const { results, isLoading } = this.state;
     return (
       <div className="AutocompletePlace">

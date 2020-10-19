@@ -58,6 +58,13 @@ export default {
       .catch(errorHandler);
   },
 
+  getUser(endPoint) {
+    return service
+      .patch(endPoint)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   updateUser(endPoint, data) {
     return service
       .patch(endPoint, data)
