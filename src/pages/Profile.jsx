@@ -74,7 +74,7 @@ class Profile extends React.Component {
       <div className="background-form edit">
         <div className="form-container">
           <form className="Form">
-            <img src={this.state.profileImage} alt="profile-pic" />
+            <img src={this.state.profileImage} alt="profile-pic" className="profile-photo"/>
             <label htmlFor="profileImage">Profile Image</label>
             <input
               type="file"

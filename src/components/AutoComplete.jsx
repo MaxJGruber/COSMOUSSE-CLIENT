@@ -28,8 +28,8 @@ class AutocompletePlace extends Component {
           `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.coordinates[0]},${this.props.coordinates[1]}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         )
         .then((response) => {
-          console.log(response.data);
-          console.log(response.data.features);
+          // console.log(response.data);
+          // console.log(response.data.features);
           this.setState({
             search: response.data.features[0].place_name,
             isLoading: false,
@@ -83,7 +83,7 @@ class AutocompletePlace extends Component {
   }
 
   render() {
-    console.log(this.props.coordinates);
+    // console.log(this.props.coordinates);
     const { results, isLoading } = this.state;
     return (
       <div className="AutocompletePlace">

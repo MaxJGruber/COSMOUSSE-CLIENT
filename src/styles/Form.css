@@ -21,7 +21,7 @@
 }
 
 .edit {
-  padding-top: 275px;
+  padding-top: 100px;
 }
 
 .form-container {
@@ -61,6 +61,11 @@
 .Form .title {
   margin-bottom: 20px;
   font-size: 2.25rem;
+}
+
+.Form .profile-photo{
+  border: 2px solid dodgerblue;
+  height: 150px;
 }
 
 .Form input {

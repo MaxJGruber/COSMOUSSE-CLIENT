@@ -15,16 +15,20 @@ class AppMap extends React.PureComponent {
     lng: 2.349014, // Default lng and lat set to the center of paris.
     lat: 48.864716,
     zoom: 12, // used for map zoom level
+    selectedCoordinates: { selectedLat: null, selectedLng: null },
   };
 
   componentDidMount() {
     // Get users geo location and set it as the state so the map centers relative to the users current location. :)
     const success = (position) => {
-      console.log("hello");
+      console.log("success!");
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       console.log(latitude, longitude);
-      this.setState({ lat: latitude, lng: longitude });
+      this.setState({
+        selectedCoordinates: { selectedLng: longitude, selectedLat: latitude },
+      });
+      console.log(this.state.selectedCoordinates);
     };
 
     const error = () => {
@@ -46,15 +50,14 @@ class AppMap extends React.PureComponent {
     }
   }
 
-  // handleClick = (selectedItem) => {
-  //   console.log("########", selectedItem._id);
-  // };
-
   render() {
-    // console.log(this.props.items);
+    console.log(this.props.items.map((item) => item.location.coordinates));
     // console.log(this.state.lat, this.state.lng);
-    // console.log(this.props.items[0].location.coordinates);
     // console.log(">>>>>>>>>>", this.props);
+    console.log([
+      this.state.selectedCoordinates.selectedLng,
+      this.state.selectedCoordinates.selectedLat,
+    ]);
     const beerLayer = (
       <Layer
         type="symbol"
@@ -67,29 +70,27 @@ class AppMap extends React.PureComponent {
             key={index}
             properties={{ ...item }}
             id={item._id}
-            // onClick={() => this.handleClick(item)}
             coordinates={item.location.coordinates}
           />
         ))}
       </Layer>
     );
 
-    // const userLayer = (
-    //   <Layer
-    //     type="symbol"
-    //     id="beers"
-    //     images={["user-icon", beerImg]}
-    //     layout={{ "icon-image": "user-icon" }}
-    //   >
-    //     <Feature
-    //       // properties={this.state}
-    //       // id={item._id}
-    //       // onClick={() => this.handleClick(item)}
-    //       coordinates={[this.state.lng, this.state.lat]}
-    //     />
-    //     ))
-    //   </Layer>
-    // );
+    const userLayer = (
+      <Layer
+        type="symbol"
+        id="user"
+        images={["user-icon", beerImg]}
+        layout={{ "icon-image": "user-icon" }}
+      >
+        <Feature
+          coordinates={[
+            this.state.selectedCoordinates.selectedLng,
+            this.state.selectedCoordinates.selectedLat,
+          ]}
+        />
+      </Layer>
+    );
 
     return (
       <Map
@@ -104,12 +105,10 @@ class AppMap extends React.PureComponent {
           position: "absolute",
         }}
         center={[this.state.lng, this.state.lat]}
-        // onClick={(p1,p2) => console.log(p1,p2)}
         onClick={(p1, p2) => this.props.onClickMap(p1, p2)}
-        // selectedCoordinates={[this.state.selectedLng, this.state.selectedLat]}
       >
         {beerLayer}
-        {/* {userLayer} */}
+        {userLayer}
       </Map>
     );
   }

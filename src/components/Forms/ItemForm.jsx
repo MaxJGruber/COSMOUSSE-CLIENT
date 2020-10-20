@@ -112,12 +112,12 @@ export class ItemForm extends Component {
 
   render() {
     // console.log(this.context);
-    // console.log(">>>>>", this.props);
+    // console.log(">>>>>", this.state.rating);
     return (
       <div className="background-item-form">
         <div className="item-form-container ">
-          <img src={this.state.image} alt="" />
           <form className="Form" onChange={this.handleChange}>
+          <img src={this.state.image} alt="" className="profile-photo" />
             <div className="form-group">
               <label htmlFor="image">Image</label>
               <input type="file" id="image" name="image" />
@@ -138,17 +138,64 @@ export class ItemForm extends Component {
               <label className="label" htmlFor="type">
                 Type{"  "}
               </label>
-              <select name="type" id="type" defaultValue="-1">
+              <select
+                name="type"
+                id="type"
+                defaultValue="-1"
+                // selected={this.state.type}
+                onChange={this.handleChange}
+              >
                 <option value="-1" disabled>
                   Select a type
                 </option>
-                <option value="blonde">Blonde</option>
-                <option value="stout">Stout</option>
-                <option value="pale ale">Pale Ale</option>
-                <option value="ipa">IPA</option>
-                <option value="cider">Cider</option>
-                <option value="wheat beer">Wheat</option>
-                <option value="other">Other</option>
+                <option
+                  value="blonde"
+                  selected={this.state.type === "blonde"}
+                  onChange={this.handleChange}
+                >
+                  Blonde
+                </option>
+                <option
+                  value="stout"
+                  selected={this.state.type === "stout"}
+                  onChange={this.handleChange}
+                >
+                  Stout
+                </option>
+                <option
+                  value="pale ale"
+                  selected={this.state.type === "pale ale"}
+                  onChange={this.handleChange}
+                >
+                  Pale Ale
+                </option>
+                <option
+                  value="ipa"
+                  selected={this.state.type === "ipa"}
+                  onChange={this.handleChange}
+                >
+                  IPA
+                </option>
+                <option
+                  value="cider"
+                  selected={this.state.type === "cider"}
+                  onChange={this.handleChange}
+                >
+                  Cider
+                </option>
+                <option
+                  value="wheat beer"
+                  selected={this.state.type === "wheat beer"}
+                >
+                  Wheat
+                </option>
+                <option
+                  value="other"
+                  selected={this.state.type === "other"}
+                  onChange={this.handleChange}
+                >
+                  Other
+                </option>
               </select>
               <br></br>
               <label htmlFor="isCraft">Is it a Craft Beer?</label>
@@ -156,7 +203,8 @@ export class ItemForm extends Component {
                 type="checkbox"
                 name="isCraft"
                 id="isCraft"
-                defaultValue={this.state.isCraft}
+                checked={this.state.isCraft}
+                onChange={this.handleChange}
               />
               <label className="label" htmlFor="location">
                 Address
@@ -198,6 +246,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="0"
+                    defaultChecked={this.state.rating === "0"}
                   />
                   0
                 </div>
@@ -207,6 +256,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="1"
+                    defaultChecked={this.state.rating === "1"}
                   />
                   1
                 </div>
@@ -216,6 +266,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="2"
+                    defaultChecked={this.state.rating === "2"}
                   />
                   2
                 </div>
@@ -225,6 +276,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="3"
+                    defaultChecked={this.state.rating === "3"}
                   />
                   3
                 </div>
@@ -234,6 +286,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="4"
+                    defaultChecked={this.state.rating === "4"}
                   />
                   4
                 </div>
@@ -243,6 +296,7 @@ export class ItemForm extends Component {
                     className="rate"
                     name="rating"
                     value="5"
+                    defaultChecked={this.state.rating === "5"}
                   />
                   5
                 </div>

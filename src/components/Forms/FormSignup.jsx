@@ -4,7 +4,6 @@ import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
 import "../../styles/Form.css";
-import "../../styles/FormSignUp.css";
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -23,7 +22,7 @@ class FormSignup extends Component {
         : event.target.value;
 
     const key = event.target.name;
-    console.log(key, value);
+    // console.log(key, value);
 
     this.setState({ [key]: value });
   };
