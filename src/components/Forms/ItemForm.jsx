@@ -8,6 +8,7 @@ import { buildFormData } from "../../utils";
 import { UserContext } from "../Auth/UserContext";
 import { Rating } from "semantic-ui-react";
 import { Checkbox } from "semantic-ui-react";
+import axios from "axios";
 import "../../styles/Form.css";
 
 export class ItemForm extends Component {
@@ -15,7 +16,7 @@ export class ItemForm extends Component {
   state = {
     name: "",
     brand: "",
-    type: null,
+    type: "",
     rating: null,
     location: "",
     description: "",
@@ -31,7 +32,7 @@ export class ItemForm extends Component {
       API.getOneItem(`/item/${this.props.id}`)
         .then((apiRes) => {
           const item = apiRes;
-          console.log(item);
+          // console.log(item.location);
           this.setState({
             name: item.name,
             brand: item.brand,
@@ -48,6 +49,30 @@ export class ItemForm extends Component {
         .catch((apiErr) => {
           console.log(apiErr);
         });
+    } else if (this.props.coordinates === undefined) {
+      return;
+    } else {
+      axios
+        .get(
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.coordinates[0]},${this.props.coordinates[1]}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
+        )
+        .then((response) => {
+          // console.log(response.data);
+          // console.log(response.data.features);
+          this.setState({
+            location: {
+              formattedAddress: response.data.features[0].place_name,
+              coordinates: this.props.coordinates,
+              type: "Point",
+            },
+            isLoading: false,
+          });
+        });
+    }
+    {
+      // console.log(this.state.location);
+      // console.log(this.props.coordinates);
+      this.setState({ location: this.props.coordinates });
     }
   }
 
@@ -78,6 +103,11 @@ export class ItemForm extends Component {
     } else {
       this.createItem();
     }
+  };
+
+  handleRate = (evt, data) => {
+    console.log(">>>>>>", data.rating);
+    this.setState({ rating: data.rating });
   };
 
   createItem = () => {
@@ -114,7 +144,8 @@ export class ItemForm extends Component {
 
   render() {
     // console.log(this.context);
-    // console.log(">>>>>", this.state.rating);
+    console.log(">>>>>", this.state);
+    console.log("=======", this.props.coordinates);
     return (
       <div className="background-item-form">
         <div className="item-form-container ">
@@ -145,77 +176,42 @@ export class ItemForm extends Component {
               <select
                 name="type"
                 id="type"
-                defaultValue="-1"
-                // selected={this.state.type}
+                value={this.state.type || "-1"}
                 onChange={this.handleChange}
               >
                 <option value="-1" disabled>
                   Select a type
                 </option>
-                <option
-                  value="blonde"
-                  selected={this.state.type === "blonde"}
-                  onChange={this.handleChange}
-                >
+                <option value="blonde" onChange={this.handleChange}>
                   Blonde
                 </option>
-                <option
-                  value="stout"
-                  selected={this.state.type === "stout"}
-                  onChange={this.handleChange}
-                >
+                <option value="stout" onChange={this.handleChange}>
                   Stout
                 </option>
-                <option
-                  value="pale ale"
-                  selected={this.state.type === "pale ale"}
-                  onChange={this.handleChange}
-                >
+                <option value="pale ale" onChange={this.handleChange}>
                   Pale Ale
                 </option>
-                <option
-                  value="ipa"
-                  selected={this.state.type === "ipa"}
-                  onChange={this.handleChange}
-                >
+                <option value="ipa" onChange={this.handleChange}>
                   IPA
                 </option>
-                <option
-                  value="cider"
-                  selected={this.state.type === "cider"}
-                  onChange={this.handleChange}
-                >
+                <option value="cider" onChange={this.handleChange}>
                   Cider
                 </option>
-                <option
-                  value="wheat beer"
-                  selected={this.state.type === "wheat beer"}
-                >
-                  Wheat
-                </option>
-                <option
-                  value="other"
-                  selected={this.state.type === "other"}
-                  onChange={this.handleChange}
-                >
+                <option value="wheat beer">Wheat</option>
+                <option value="other" onChange={this.handleChange}>
                   Other
                 </option>
               </select>
               <br></br>
-              <label htmlFor="isCraft">Is it a Craft Beer?</label><br></br>
+              <label htmlFor="isCraft">Is it a Craft Beer?</label>
+              <br></br>
               <Checkbox
                 toggle
                 name="isCraft"
                 id="isCraft"
                 checked={this.state.isCraft}
-              /><br></br>
-              {/* <input
-                type="checkbox"
-                name="isCraft"
-                id="isCraft"
-                checked={this.state.isCraft}
-                onChange={this.handleChange}
-              /> */}
+              />
+              <br></br>
               <label className="label" htmlFor="location">
                 Address
               </label>
@@ -246,15 +242,17 @@ export class ItemForm extends Component {
                   />
                 </div>
               </div>
-              {/* <label className="label" htmlFor="rating">
+              <label className="label" htmlFor="rating">
                 Rating
-              </label> */}
+              </label>
               {/* <div className="ratings-over-container"> */}
               <div>
                 <Rating
                   icon="star"
-                  defaultRating={this.state.rating}
-                  name="rating"
+                  size="massive"
+                  defaultRating={1}
+                  value={this.state.rating}
+                  onRate={(evt, rating) => this.handleRate(evt, rating)}
                   maxRating={5}
                 />
                 {/* <input

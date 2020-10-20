@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { Avatar } from "@material-ui/core";
 
 import "../styles/NavMain.css";
 
@@ -24,11 +25,16 @@ const NavMain = (props) => {
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <img
+                <Avatar
+                  alt="User"
+                  src={context.user.profileImage}
+                  // className={classes.large}
+                />
+                {/* <img
                   className="profileImage"
                   src={context.user.profileImage}
                   alt="you"
-                />
+                /> */}
               </NavLink>
             </React.Fragment>
           )}
@@ -53,10 +59,10 @@ const NavMain = (props) => {
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <img
-                  className="profileImage"
+                <Avatar
+                  alt="User"
                   src={context.user.profileImage}
-                  alt="you"
+                  // className={classes.large}
                 />
               </NavLink>
             </React.Fragment>
@@ -124,10 +130,10 @@ const NavMain = (props) => {
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <img
-                  className="profileImage"
+                <Avatar
+                  alt="User"
                   src={context.user.profileImage}
-                  alt="you"
+                  // className={classes.large}
                 />
               </NavLink>
             </React.Fragment>

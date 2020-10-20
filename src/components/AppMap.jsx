@@ -7,8 +7,11 @@ const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
 });
 
-const beerImg = new Image(20, 30);
+const beerImg = new Image(30, 30);
 beerImg.src = "../.././pint.svg";
+
+const userIcon = new Image(30, 30);
+userIcon.src = "../.././Pin.png";
 
 class AppMap extends React.PureComponent {
   state = {
@@ -28,7 +31,7 @@ class AppMap extends React.PureComponent {
       this.setState({
         selectedCoordinates: { selectedLng: longitude, selectedLat: latitude },
       });
-      console.log(this.state.selectedCoordinates);
+      // console.log(this.state.selectedCoordinates);
     };
 
     const error = () => {
@@ -51,13 +54,13 @@ class AppMap extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props.items.map((item) => item.location.coordinates));
+    // console.log(this.props.items.map((item) => item.location.coordinates));
     // console.log(this.state.lat, this.state.lng);
     // console.log(">>>>>>>>>>", this.props);
-    console.log([
-      this.state.selectedCoordinates.selectedLng,
-      this.state.selectedCoordinates.selectedLat,
-    ]);
+    // console.log([
+    //   this.state.selectedCoordinates.selectedLng,
+    //   this.state.selectedCoordinates.selectedLat,
+    // ]);
     const beerLayer = (
       <Layer
         type="symbol"
@@ -80,7 +83,7 @@ class AppMap extends React.PureComponent {
       <Layer
         type="symbol"
         id="user"
-        images={["user-icon", beerImg]}
+        images={["user-icon", userIcon]}
         layout={{ "icon-image": "user-icon" }}
       >
         <Feature
@@ -95,12 +98,12 @@ class AppMap extends React.PureComponent {
     return (
       <Map
         // eslint-disable-next-line
-        style="mapbox://styles/mapbox/light-v10"
+        style="mapbox://styles/mapbox/streets-v11"
         zoom={[12]}
         containerStyle={{
           top: 0,
           left: 0,
-          bottom: 0,
+          bottom: 75,
           right: 0,
           position: "absolute",
         }}

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import API from "../api/apiHandler";
 import NavMain from "../components/NavMain";
+import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -56,8 +57,11 @@ class Profile extends React.Component {
     for (let key in this.state) {
       fd.append(key, this.state[key]);
     }
-    API.updateUser(fd)
-      .then((dbRes) => console.log(dbRes))
+    API.updateUser("/user/edit", fd)
+      .then((dbRes) => {
+        console.log(dbRes);
+        this.props.history.push("/");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -74,7 +78,11 @@ class Profile extends React.Component {
       <div className="background-form edit">
         <div className="form-container">
           <form className="Form">
-            <img src={this.state.profileImage} alt="profile-pic" className="profile-photo"/>
+            <img
+              src={this.state.profileImage}
+              alt="profile-pic"
+              className="profile-photo"
+            />
             <label htmlFor="profileImage">Profile Image</label>
             <input
               type="file"
@@ -121,4 +129,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

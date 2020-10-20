@@ -29,11 +29,10 @@ class Loglist extends React.Component {
     return (
       <div>
         {this.state.items.map((item, i) => {
-          console.log(item.name);
           return (
             <LogElement
               key={i}
-              name={item.name}
+              properties={{ ...item }}
               id={item._id}
               deleteItem={this.deleteItem}
             />

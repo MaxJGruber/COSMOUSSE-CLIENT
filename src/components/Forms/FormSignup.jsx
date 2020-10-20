@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
+import { Label } from "semantic-ui-react";
 import "../../styles/Form.css";
 
 class FormSignup extends Component {
@@ -65,6 +66,11 @@ class FormSignup extends Component {
               name="firstName"
               onChange={this.handleChange}
             />
+            {!this.state.firstName && (
+              <Label basic color="red" pointing>
+                Please enter a value
+              </Label>
+            )}
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
@@ -72,6 +78,11 @@ class FormSignup extends Component {
               name="lastName"
               onChange={this.handleChange}
             />
+            {!this.state.lastName && (
+              <Label basic color="red" pointing>
+                Please enter a value
+              </Label>
+            )}
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -79,6 +90,11 @@ class FormSignup extends Component {
               name="email"
               onChange={this.handleChange}
             />
+            {!this.state.email && (
+              <Label basic color="red" pointing>
+                Please enter a value
+              </Label>
+            )}
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -86,6 +102,11 @@ class FormSignup extends Component {
               name="password"
               onChange={this.handleChange}
             />
+            {!this.state.password && (
+              <Label basic color="red" pointing>
+                Please enter a value
+              </Label>
+            )}
             <label htmlFor="birthday">Birthday</label>
             <input
               type="date"
@@ -93,6 +114,16 @@ class FormSignup extends Component {
               name="birthday"
               onChange={this.handleChange}
             />
+            {!this.state.birthday && (
+              <Label basic color="red" pointing>
+                Please enter a value
+              </Label>
+            )}
+            {this.state.birthday < 18 && (
+              <Label basic color="red" pointing>
+                You must be over 18 to create an account
+              </Label>
+            )}
             <button>Create Account</button>
             <p className="question">
               Already have an account ?{" "}
