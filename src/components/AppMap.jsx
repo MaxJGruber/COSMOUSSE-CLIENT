@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { withRouter } from "react-router-dom";
-// import { usePosition } from 'use-position';
+// import { Popup } from 'semantic-ui-react'
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,

@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { buildFormData } from "../../utils";
 import { UserContext } from "../Auth/UserContext";
+import { Rating } from "semantic-ui-react";
+import { Checkbox } from "semantic-ui-react";
 import "../../styles/Form.css";
 
 export class ItemForm extends Component {
@@ -117,7 +119,9 @@ export class ItemForm extends Component {
       <div className="background-item-form">
         <div className="item-form-container ">
           <form className="Form" onChange={this.handleChange}>
-          <img src={this.state.image} alt="" className="profile-photo" />
+            {this.state.image && (
+              <img src={this.state.image} alt="" className="profile-photo" />
+            )}
             <div className="form-group">
               <label htmlFor="image">Image</label>
               <input type="file" id="image" name="image" />
@@ -198,14 +202,20 @@ export class ItemForm extends Component {
                 </option>
               </select>
               <br></br>
-              <label htmlFor="isCraft">Is it a Craft Beer?</label>
-              <input
+              <label htmlFor="isCraft">Is it a Craft Beer?</label><br></br>
+              <Checkbox
+                toggle
+                name="isCraft"
+                id="isCraft"
+                checked={this.state.isCraft}
+              /><br></br>
+              {/* <input
                 type="checkbox"
                 name="isCraft"
                 id="isCraft"
                 checked={this.state.isCraft}
                 onChange={this.handleChange}
-              />
+              /> */}
               <label className="label" htmlFor="location">
                 Address
               </label>
@@ -236,12 +246,18 @@ export class ItemForm extends Component {
                   />
                 </div>
               </div>
-              <label className="label" htmlFor="rating">
+              {/* <label className="label" htmlFor="rating">
                 Rating
-              </label>
-              <div className="ratings-over-container">
-                <div>
-                  <input
+              </label> */}
+              {/* <div className="ratings-over-container"> */}
+              <div>
+                <Rating
+                  icon="star"
+                  defaultRating={this.state.rating}
+                  name="rating"
+                  maxRating={5}
+                />
+                {/* <input
                     type="radio"
                     className="rate"
                     name="rating"
@@ -299,7 +315,8 @@ export class ItemForm extends Component {
                     defaultChecked={this.state.rating === "5"}
                   />
                   5
-                </div>
+                  */}
+                {/* </div> */}
               </div>
               <br></br>
               <label className="label" htmlFor="description">
