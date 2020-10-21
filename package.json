@@ -16,14 +16,14 @@
     "react-dom": "^16.13.1",
     "react-mapbox-gl": "^4.8.6",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^3.4.4",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
     "use-position": "0.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "dotenv -e .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv-cli": "^4.0.0"
   }
 }
