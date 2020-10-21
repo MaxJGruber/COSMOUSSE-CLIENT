@@ -73,7 +73,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    console.log(this.context);
+    // console.log(this.context);
     return (
       <div className="background-form edit">
         <div className="form-container">

@@ -5,7 +5,7 @@ import "../styles/About.css";
 
 const About = (props) => {
   const { context } = props;
-  console.log(context);
+  // console.log(context);
 
   return (
     <div className="About">

@@ -32,7 +32,7 @@ export class ItemForm extends Component {
       API.getOneItem(`/item/${this.props.id}`)
         .then((apiRes) => {
           const item = apiRes;
-            console.log(item.location);
+          // console.log(item.location.coordinates);
           axios
             .get(
               `https://api.mapbox.com/geocoding/v5/mapbox.places/${item.location.coordinates[0]},${item.location.coordinates[1]}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
@@ -43,14 +43,13 @@ export class ItemForm extends Component {
               this.setState({
                 location: {
                   formattedAddress: response.data.features[0].place_name,
-                  coordinates: this.props.coordinates,
+                  coordinates: item.location.coordinates,
                   type: "Point",
                 },
                 isLoading: false,
               });
             });
 
-      
           this.setState({
             name: item.name,
             brand: item.brand,
@@ -111,7 +110,7 @@ export class ItemForm extends Component {
         : event.target.value;
 
     const key = event.target.name;
-    console.log(key, value);
+    // console.log(key, value);
 
     this.setState({ [key]: value });
   };
@@ -126,7 +125,7 @@ export class ItemForm extends Component {
   };
 
   handleRate = (evt, data) => {
-    console.log(">>>>>>", data.rating);
+    // console.log(">>>>>>", data.rating);
     this.setState({ rating: data.rating });
   };
 
@@ -164,7 +163,7 @@ export class ItemForm extends Component {
 
   render() {
     // console.log(this.context);
-    console.log(">>>>>", this.state);
+    // console.log(">>>>>", this.state);
     // console.log("=======", this.props.coordinates);
     return (
       <div className="background-item-form">
