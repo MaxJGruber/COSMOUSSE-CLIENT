@@ -76,6 +76,7 @@
   margin-bottom: 10px;
   border-radius: 2em;
   width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
   /* align-items: center; */
 }
 
@@ -110,6 +111,7 @@
   cursor: pointer;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   border-radius: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 
 .Form button:hover {
@@ -164,11 +166,14 @@
   border: none;
   font-size: 14px;
   background: #eff1f6;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
   /* padding: 12px 12px; */
 }
 
 .Form select {
   padding: 5px;
+  border-radius: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 textarea {
   display: block;
@@ -186,6 +191,7 @@ textarea {
   margin-bottom: 10px;
   font-family: "Manrope", sans-serif;
   border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 
 .form-group .label {

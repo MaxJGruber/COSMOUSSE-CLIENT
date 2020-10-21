@@ -32,6 +32,7 @@
 .NavMain .fa-home {
   width: 40px;
   height: auto;
+  
 }
 
 .NavMain .profileImage {
@@ -43,4 +44,10 @@
 
 .NavMain a {
   color: aliceblue;
+}
+
+.NavMain .MuiAvatar-circle {
+  height: 50px;
+  width: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }

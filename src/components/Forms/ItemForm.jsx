@@ -21,7 +21,6 @@ export class ItemForm extends Component {
     location: "",
     description: "",
     isCraft: false,
-    image: "",
     added_by: "",
     price: null,
     priceHH: null,
@@ -161,9 +160,18 @@ export class ItemForm extends Component {
       });
   };
 
+  deleteItem = () => {
+    API.deleteOne(`/item/${this.props.id}/delete`)
+      .then((dbRes) => {
+        console.log(dbRes);
+        this.props.history.push("/");
+      })
+      .catch((error) => console.log(error));
+  };
+
   render() {
     // console.log(this.context);
-    // console.log(">>>>>", this.state);
+    // console.log(">>>>>", this.props.id);
     // console.log("=======", this.props.coordinates);
     return (
       <div className="background-item-form">
@@ -269,7 +277,7 @@ export class ItemForm extends Component {
                 <Rating
                   icon="star"
                   size="massive"
-                  defaultRating={1}
+                  defaultRating={this.state.rating}
                   value={this.state.rating}
                   onRate={(evt, rating) => this.handleRate(evt, rating)}
                   maxRating={5}
@@ -347,7 +355,7 @@ export class ItemForm extends Component {
               />
             </div>
             <div className="option-btns">
-              <button id="delete" onClick={this.deleteItem}>
+              <button type="button" id="delete" onClick={this.deleteItem}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </button>{" "}
               <button id="save" onClick={this.handleSubmit}>

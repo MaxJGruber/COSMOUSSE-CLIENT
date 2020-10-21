@@ -33,6 +33,7 @@
   border-radius: 2em;
   display: flex;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 
 .LogElement button:hover {
@@ -51,7 +52,6 @@
 }
 
 .LogElement .beer-info {
-  /* margin: 40px 100px; */
   justify-content: center;
   align-items: center;
   text-align: center;

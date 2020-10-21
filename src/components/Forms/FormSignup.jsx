@@ -6,12 +6,21 @@ import { Link } from "react-router-dom";
 import { Label } from "semantic-ui-react";
 import "../../styles/Form.css";
 
+const validateSchema = ({ errors, ...rest }) => {
+  const err = {};
+  for (let key in rest) {
+    if (rest[key] === "") err[key] = true;
+  }
+  return err;
+};
+
 class FormSignup extends Component {
   static contextType = UserContext;
 
   state = {
     email: "",
     password: "",
+    errors: {},
   };
 
   handleChange = (event) => {
@@ -30,6 +39,13 @@ class FormSignup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const errors = validateSchema(this.state);
+    if (Object.keys(errors).length) {
+      this.setState({ errors: errors });
+      return;
+    }
+
     const fd = new FormData();
 
     for (let key in this.state) {
@@ -78,7 +94,7 @@ class FormSignup extends Component {
               name="lastName"
               onChange={this.handleChange}
             />
-            {!this.state.lastName && (
+            {!this.state.errors.lastName && (
               <Label basic color="red" pointing>
                 Please enter a value
               </Label>
@@ -90,7 +106,7 @@ class FormSignup extends Component {
               name="email"
               onChange={this.handleChange}
             />
-            {!this.state.email && (
+            {this.state.errors.email && (
               <Label basic color="red" pointing>
                 Please enter a value
               </Label>
@@ -102,7 +118,7 @@ class FormSignup extends Component {
               name="password"
               onChange={this.handleChange}
             />
-            {!this.state.password && (
+            {this.state.errors.password && (
               <Label basic color="red" pointing>
                 Please enter a value
               </Label>

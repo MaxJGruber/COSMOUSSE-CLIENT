@@ -47,7 +47,7 @@ const NavMain = (props) => {
           )}
         </nav>
       );
-      case "about":
+    case "about":
       return (
         <nav className="NavMain">
           {context.isLoggedIn && (
@@ -73,7 +73,7 @@ const NavMain = (props) => {
               </NavLink>
             </React.Fragment>
           )}
-           <NavLink to="/">
+          <NavLink to="/">
             <FontAwesomeIcon icon={faHome} />
           </NavLink>
           <NavLink to="/loglist">

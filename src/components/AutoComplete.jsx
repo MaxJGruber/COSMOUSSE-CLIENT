@@ -83,8 +83,8 @@ class AutocompletePlace extends Component {
   }
 
   render() {
-    console.log(this.state.search);
-    console.log(this.props.defaultValue);
+    // console.log(this.state.search);
+    // console.log(this.props.defaultValue);
     const { results, isLoading } = this.state;
     return (
       <div className="AutocompletePlace">
