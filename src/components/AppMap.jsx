@@ -54,7 +54,7 @@ class AppMap extends React.PureComponent {
   }
 
   render() {
-    // console.log(this.props.items.map((item) => item.location.coordinates));
+    // console.log(this.props.items.map((item) => item));
     // console.log(this.state.lat, this.state.lng);
     // console.log(">>>>>>>>>>", this.props);
     // console.log([

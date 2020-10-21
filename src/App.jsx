@@ -1,15 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// import NavMain from "./components/NavMain";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import LogList from "./pages/Loglist";
-// import ItemForm from "./components/Forms/ItemForm";
 import ItemCreate from "./pages/ItemCreate";
 import ItemEdit from "./pages/ItemEdit";
+import About from "./pages/About";
 import { withRouter } from "react-router-dom";
 
 class App extends React.Component {
@@ -27,7 +26,7 @@ class App extends React.Component {
       console.log("You can't place anything here!");
     } else if (features[0].source === "beers") {
       console.log("It's a beer!");
-      console.log(features[0].properties._id);
+      console.log(features[0].properties);
       this.setState({ selectedItem: features[0].properties._id });
       this.props.history.push(`/item/${features[0].properties._id}/editpage`);
     } else {
@@ -44,6 +43,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/about" component={About} />
           <ProtectedRoute exact path="/profile" component={Profile} />
           <Route exact path="/loglist" component={LogList} />
           <Route

@@ -3,7 +3,7 @@ import ItemForm from "../components/Forms/ItemForm";
 import NavMain from "../components/NavMain";
 
 const ItemEdit = (props) => {
-  // console.log("========", props);
+  console.log("========", props);
   return (
     <div>
       <ItemForm action="edit" id={props.match.params.id} />

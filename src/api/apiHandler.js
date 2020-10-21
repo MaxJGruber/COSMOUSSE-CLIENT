@@ -60,7 +60,7 @@ export default {
 
   getUser(endPoint) {
     return service
-      .patch(endPoint)
+      .get(endPoint)
       .then((res) => res.data)
       .catch(errorHandler);
   },

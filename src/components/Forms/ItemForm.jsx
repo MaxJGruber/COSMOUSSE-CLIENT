@@ -32,13 +32,31 @@ export class ItemForm extends Component {
       API.getOneItem(`/item/${this.props.id}`)
         .then((apiRes) => {
           const item = apiRes;
-          // console.log(item.location);
+            console.log(item.location);
+          axios
+            .get(
+              `https://api.mapbox.com/geocoding/v5/mapbox.places/${item.location.coordinates[0]},${item.location.coordinates[1]}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
+            )
+            .then((response) => {
+              console.log(response.data);
+              console.log(response.data.features);
+              this.setState({
+                location: {
+                  formattedAddress: response.data.features[0].place_name,
+                  coordinates: this.props.coordinates,
+                  type: "Point",
+                },
+                isLoading: false,
+              });
+            });
+
+      
           this.setState({
             name: item.name,
             brand: item.brand,
             type: item.type,
             rating: item.rating,
-            location: item.location,
+            // location: item.location,
             description: item.description,
             isCraft: item.isCraft,
             image: item.image,
@@ -49,6 +67,8 @@ export class ItemForm extends Component {
         .catch((apiErr) => {
           console.log(apiErr);
         });
+      // } else if (this.props.coordinates === undefined) {
+      //   return;
     } else if (this.props.coordinates === undefined) {
       return;
     } else {
@@ -65,15 +85,15 @@ export class ItemForm extends Component {
               coordinates: this.props.coordinates,
               type: "Point",
             },
-            isLoading: false,
           });
         });
     }
-    {
-      // console.log(this.state.location);
-      // console.log(this.props.coordinates);
-      this.setState({ location: this.props.coordinates });
-    }
+
+    // {
+    //   // console.log(this.state.location);
+    //   // console.log(this.props.coordinates);
+    //   this.setState({ location: this.props.coordinates });
+    // }
   }
 
   handlePlace = (place) => {
@@ -145,7 +165,7 @@ export class ItemForm extends Component {
   render() {
     // console.log(this.context);
     console.log(">>>>>", this.state);
-    console.log("=======", this.props.coordinates);
+    // console.log("=======", this.props.coordinates);
     return (
       <div className="background-item-form">
         <div className="item-form-container ">
@@ -218,7 +238,7 @@ export class ItemForm extends Component {
               <AutoComplete
                 onSelect={this.handlePlace}
                 coordinates={this.props.coordinates}
-                defaultValue={this.state.location}
+                defaultValue={this.state.location.formattedAddress}
               />
               <div className="price-over-container">
                 <div className="price-container">
