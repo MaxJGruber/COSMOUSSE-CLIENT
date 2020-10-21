@@ -2,6 +2,7 @@ import React from "react";
 import LogElement from "../components/LogElement";
 import API from "../api/apiHandler";
 import NavMain from "../components/NavMain";
+import "../styles/LogElement.css";
 
 class Loglist extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class Loglist extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="LogList">
         {this.state.items.map((item, i) => {
           return (
             <LogElement

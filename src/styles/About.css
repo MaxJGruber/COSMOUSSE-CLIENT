@@ -30,4 +30,17 @@
 .About .hook {
   text-align: center;
   margin: 30px auto;
+  background-color: teal;
+  color: aliceblue;
+  border-radius: 2em;
+  padding: 5px 0;
+}
+
+.About a {
+  color: aliceblue;
+}
+
+.About .hook:hover {
+  background-color: #12fa85;
+  color: black;
 }

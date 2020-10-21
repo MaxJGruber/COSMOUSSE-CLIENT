@@ -47,6 +47,40 @@ const NavMain = (props) => {
           )}
         </nav>
       );
+      case "about":
+      return (
+        <nav className="NavMain">
+          {context.isLoggedIn && (
+            <React.Fragment>
+              <NavLink to="/profile">
+                <Avatar
+                  alt="User"
+                  src={context.user.profileImage}
+                  // className={classes.large}
+                />
+                {/* <img
+                  className="profileImage"
+                  src={context.user.profileImage}
+                  alt="you"
+                /> */}
+              </NavLink>
+            </React.Fragment>
+          )}
+          {!context.isLoggedIn && (
+            <React.Fragment>
+              <NavLink to="/signin">
+                <FontAwesomeIcon icon={faSignInAlt} />
+              </NavLink>
+            </React.Fragment>
+          )}
+           <NavLink to="/">
+            <FontAwesomeIcon icon={faHome} />
+          </NavLink>
+          <NavLink to="/loglist">
+            <FontAwesomeIcon icon={faClipboardList} />
+          </NavLink>
+        </nav>
+      );
     case "item":
       return (
         <nav className="NavMain">

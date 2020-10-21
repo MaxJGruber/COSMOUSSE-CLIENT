@@ -1,6 +1,7 @@
 import React from "react";
 import { withUser } from "../components/Auth/withUser.jsx";
 import NavMain from "../components/NavMain";
+import { Link } from "react-router-dom";
 import "../styles/About.css";
 
 const About = (props) => {
@@ -33,11 +34,13 @@ const About = (props) => {
         </p>
       </div>
       <div className="hook">
-        <h4 className="question-link">
-          Ready to start your CosMousse adventure?
-        </h4>
+        <Link to="/signup">
+          <h4 className="question-link">
+            Ready to start your CosMousse adventure?
+          </h4>
+        </Link>
       </div>
-      <NavMain />
+      <NavMain page="about"/>
     </div>
   );
 };
