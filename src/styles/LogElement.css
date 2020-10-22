@@ -4,6 +4,18 @@
   padding: 15px 5px;
 }
 
+.LogElementCard {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.LogList .ui.card {
+  margin: 0;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
 .LogElement {
   height: 120px;
   width: 100%;

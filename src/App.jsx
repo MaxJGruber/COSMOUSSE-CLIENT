@@ -24,12 +24,12 @@ class App extends React.Component {
     console.log(features[0], "featurres");
     if (features[0] === undefined) {
       console.log("You can't place anything here!");
-    } else if (features[0].source === "beers") {
-      console.log("It's a beer!");
-      console.log(features[0].properties);
-      this.setState({ selectedItem: features[0].properties._id });
-      this.props.history.push(`/item/${features[0].properties._id}/editpage`);
-    } else {
+      // } else if (features[0].source === "beers") {
+      //   console.log("It's a beer!");
+      //   console.log(features[0].properties);
+      //   this.setState({ selectedItem: features[0].properties._id });
+      //   this.props.history.push(`/item/${features[0].properties._id}/editpage`);
+    } else if (features[0].source === "composite") {
       console.log("MAP!");
       console.log("EVENT!!!!!", evt.lngLat);
       this.setState({ coordinates: [evt.lngLat.lng, evt.lngLat.lat] });

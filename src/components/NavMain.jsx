@@ -84,19 +84,12 @@ const NavMain = (props) => {
     case "item":
       return (
         <nav className="NavMain">
-          <NavLink exact to="/about">
-            <h3 className="logo">About</h3>
-          </NavLink>
-          <NavLink to="/">
-            <FontAwesomeIcon icon={faHome} />
-          </NavLink>
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
                 <Avatar
                   alt="User"
                   src={context.user.profileImage}
-                  // className={classes.large}
                 />
               </NavLink>
             </React.Fragment>
@@ -108,6 +101,12 @@ const NavMain = (props) => {
               </NavLink>
             </React.Fragment>
           )}
+          <NavLink to="/">
+            <FontAwesomeIcon icon={faHome} />
+          </NavLink>
+          <NavLink to="/loglist">
+            <FontAwesomeIcon icon={faClipboardList} />
+          </NavLink>
         </nav>
       );
     case "edit-profile":
