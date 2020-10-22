@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { withRouter } from "react-router-dom";
-// import { Popup } from 'semantic-ui-react'
+// import { Popup } from "semantic-ui-react";
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
@@ -19,6 +19,7 @@ class AppMap extends React.PureComponent {
     lat: 48.864716,
     zoom: 12, // used for map zoom level
     selectedCoordinates: { selectedLat: null, selectedLng: null },
+    selectedBeer: null,
   };
 
   componentDidMount() {
@@ -56,11 +57,32 @@ class AppMap extends React.PureComponent {
   render() {
     // console.log(this.props.items.map((item) => item));
     // console.log(this.state.lat, this.state.lng);
-    // console.log(">>>>>>>>>>", this.props);
+    // console.log(">>>>>>>>>>", beerImg);
     // console.log([
     //   this.state.selectedCoordinates.selectedLng,
     //   this.state.selectedCoordinates.selectedLat,
     // ]);
+
+    // const PopupExampleHeader = () => (
+    //   <>
+    //     {this.props.items.map((item) => (
+    //       <Popup
+    //         content={item.bio}
+    //         key={item.name}
+    //         header={item.name}
+    //         trigger={
+    //           <Layer
+    //             type="symbol"
+    //             id="beers"
+    //             images={["beer-icon", beerImg]}
+    //             layout={{ "icon-image": "beer-icon" }}
+    //           />
+    //         }
+    //       />
+    //     ))}
+    //   </>
+    // );
+
     const beerLayer = (
       <Layer
         type="symbol"
@@ -74,7 +96,8 @@ class AppMap extends React.PureComponent {
             properties={{ ...item }}
             id={item._id}
             coordinates={item.location.coordinates}
-          />
+            onClick={() => this.setState({ selectedBeer: item })}
+          ></Feature>
         ))}
       </Layer>
     );
@@ -91,28 +114,42 @@ class AppMap extends React.PureComponent {
             this.state.selectedCoordinates.selectedLng,
             this.state.selectedCoordinates.selectedLat,
           ]}
+          // onClick={() => PopupExampleHeader}
         />
       </Layer>
     );
 
     return (
-      <Map
-        // eslint-disable-next-line
-        style="mapbox://styles/mapbox/streets-v11"
-        zoom={[12]}
-        containerStyle={{
-          top: 0,
-          left: 0,
-          bottom: 75,
-          right: 0,
-          position: "absolute",
-        }}
-        center={[this.state.lng, this.state.lat]}
-        onClick={(p1, p2) => this.props.onClickMap(p1, p2)}
-      >
-        {beerLayer}
-        {userLayer}
-      </Map>
+      <>
+        <Map
+          // eslint-disable-next-line
+          style="mapbox://styles/mapbox/streets-v11"
+          zoom={[12]}
+          containerStyle={{
+            top: 0,
+            left: 0,
+            bottom: 75,
+            right: 0,
+            position: "absolute",
+          }}
+          center={[this.state.lng, this.state.lat]}
+          // onClick={(p1, p2) => this.props.onClickMap(p1, p2)}
+        >
+          {beerLayer}
+          {userLayer}
+        </Map>
+        <h1
+          style={{
+            display: "flex",
+            height: "100vh",
+            position: "fixed",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {this.state.selectedBeer && this.state.selectedBeer.name}
+        </h1>
+      </>
     );
   }
 }
