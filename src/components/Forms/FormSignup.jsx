@@ -9,7 +9,7 @@ import "../../styles/Form.css";
 const validateSchema = ({ errors, ...rest }) => {
   const err = {};
   for (let key in rest) {
-    console.log(rest[key]);
+    // console.log(rest[key]);
     if (rest[key] === "") {
       err[key] = true;
     } else if (getAge(rest[key]) < 18) {
@@ -149,11 +149,6 @@ class FormSignup extends Component {
                 You must be 18 or over to create an account
               </Label>
             )}
-            {/* {this.state.birthday < 18 && (
-              <Label basic color="red" pointing>
-                You must be over 18 to create an account
-              </Label>
-            )} */}
             <button>Create Account</button>
             <p className="question">
               Already have an account ?{" "}

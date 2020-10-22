@@ -30,7 +30,7 @@ class AppMap extends React.PureComponent {
       console.log("success!");
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-      console.log(latitude, longitude);
+      // console.log(latitude, longitude);
       this.setState({
         selectedCoordinates: { selectedLng: longitude, selectedLat: latitude },
       });
@@ -94,7 +94,6 @@ class AppMap extends React.PureComponent {
             this.state.selectedCoordinates.selectedLng,
             this.state.selectedCoordinates.selectedLat,
           ]}
-          // onClick={() => PopupExampleHeader}
         />
       </Layer>
     );

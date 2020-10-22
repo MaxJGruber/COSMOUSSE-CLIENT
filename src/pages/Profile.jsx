@@ -51,7 +51,7 @@ class Profile extends React.Component {
         : event.target.value;
 
     const key = event.target.name;
-    console.log(key, value);
+    // console.log(key, value);
 
     this.setState({ [key]: value });
   };

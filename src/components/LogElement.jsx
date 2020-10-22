@@ -19,7 +19,7 @@ class LogElement extends React.Component {
   open = () => this.setState({ open: true });
   close = () => this.setState({ open: false });
   render() {
-    console.log("_________", this.props);
+    // console.log("_________", this.props);
     return (
       <Card className="LogElementCard">
         <Card.Content>
