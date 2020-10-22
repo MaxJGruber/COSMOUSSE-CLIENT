@@ -76,7 +76,7 @@ class FormSignup extends Component {
 
   render() {
     return (
-      <div className="background-form">
+      <div className="background-form signup">
         <div className="form-container">
           <form className="Form" onSubmit={this.handleSubmit}>
             <label htmlFor="profileImage">Profile Image</label>

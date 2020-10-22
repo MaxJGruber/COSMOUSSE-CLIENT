@@ -2,7 +2,7 @@
   background-color: #aeeffd;
   /* background-size: cover; */
   padding-top: 65px;
-  height: 800px;
+  height: 100%;
 }
 
 /* FOR ITEM FORM  */
@@ -18,6 +18,10 @@
 
 .signin {
   padding-top: 350px;
+}
+
+.signup {
+  padding-top: 175px;
 }
 
 .edit {
