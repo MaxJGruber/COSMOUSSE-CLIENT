@@ -10,19 +10,27 @@ import ItemCreate from "./pages/ItemCreate";
 import ItemEdit from "./pages/ItemEdit";
 import About from "./pages/About";
 import { withRouter } from "react-router-dom";
+import { withUser } from "./components/Auth/withUser";
+import { UserContext } from "./components/Auth/UserContext";
 
 class App extends React.Component {
+  static contextType = UserContext;
+
   state = {
     coordinates: [],
     selectedItem: "",
+    error: false,
   };
 
   _onClickMap = (map, evt) => {
     // console.log("EVENT!!!!!", evt.lngLat);
     // console.log("map!!!!!", map);
     const features = map.queryRenderedFeatures(evt.point);
-    console.log(features[0], "featurres");
-    if (features[0] === undefined) {
+    // console.log(features[0], "featurres");
+    // console.log(UserContext);
+    if (this.context.user === null) {
+      this.setState({ error: true });
+    } else if (features[0] === undefined) {
       console.log("You can't place anything here!");
       // } else if (features[0].source === "beers") {
       //   console.log("It's a beer!");
@@ -38,8 +46,13 @@ class App extends React.Component {
   };
 
   render() {
+    // const { context } = this.props;
+    // console.log(context);
     return (
       <div className="App">
+    
+
+      
         <Switch>
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
@@ -70,4 +83,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+export default withUser(withRouter(App));

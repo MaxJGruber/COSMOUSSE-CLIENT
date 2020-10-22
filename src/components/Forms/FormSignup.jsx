@@ -57,9 +57,6 @@ class FormSignup extends Component {
       return;
     }
 
-    // const birth = getAge(this.state.birthday);
-    // if()
-
     const fd = new FormData();
 
     for (let key in this.state) {

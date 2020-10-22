@@ -19,3 +19,7 @@ a {
 ul {
   list-style-type: none;
 }
+
+.upperScreen {
+  height: calc(100vh - 80px);
+}

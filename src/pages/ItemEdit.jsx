@@ -6,7 +6,9 @@ const ItemEdit = (props) => {
   // console.log("========", props);
   return (
     <div>
-      <ItemForm action="edit" id={props.match.params.id} />
+      <div className="upperScreen">
+        <ItemForm action="edit" id={props.match.params.id} />
+      </div>
       <NavMain page="item" />
     </div>
   );

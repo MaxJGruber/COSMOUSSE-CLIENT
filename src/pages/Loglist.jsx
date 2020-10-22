@@ -28,19 +28,21 @@ class Loglist extends React.Component {
 
   render() {
     return (
-      <div className="LogList">
-        {this.state.items.map((item, i) => {
-          return (
-            <LogElement
-              key={i}
-              properties={{ ...item }}
-              id={item._id}
-              deleteItem={this.deleteItem}
-            />
-          );
-        })}
+      <>
+        <div className="upperScreen LogList">
+          {this.state.items.map((item, i) => {
+            return (
+              <LogElement
+                key={i}
+                properties={{ ...item }}
+                id={item._id}
+                deleteItem={this.deleteItem}
+              />
+            );
+          })}
+        </div>
         <NavMain page="loglist" />
-      </div>
+      </>
     );
   }
 }

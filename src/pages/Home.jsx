@@ -15,7 +15,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <AppMap items={this.state.items} onClickMap={this.props.onClickMap} />
+        <div className="upperScreen">
+          <AppMap items={this.state.items} onClickMap={this.props.onClickMap} />
+        </div>
         <NavMain page="home" />
       </div>
     );

@@ -3,7 +3,19 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import { withRouter } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
+import { Label } from "semantic-ui-react";
 import "../../styles/Form.css";
+
+const validateSchema = ({ errors, ...rest }) => {
+  const err = {};
+  for (let key in rest) {
+    // console.log(rest[key]);
+    if (rest[key] === "") {
+      err[key] = true;
+    }
+  }
+  return err;
+};
 
 class FormSignin extends Component {
   static contextType = UserContext;
@@ -11,6 +23,7 @@ class FormSignin extends Component {
   state = {
     email: "",
     password: "",
+    errors: {},
   };
 
   handleChange = (event) => {
@@ -29,6 +42,12 @@ class FormSignin extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const errors = validateSchema(this.state);
+    if (Object.keys(errors).length) {
+      this.setState({ errors: errors });
+      return;
+    }
 
     apiHandler
       .signin(this.state)
@@ -61,6 +80,11 @@ class FormSignin extends Component {
               name="password"
               onChange={this.handleChange}
             />
+            {(this.state.errors.email || this.state.errors.password) && (
+              <Label basic color="red">
+                Your email or password is invalid
+              </Label>
+            )}
             <button>Sign In</button>
             <p className="question">
               Don't have an account?{" "}

@@ -5,13 +5,14 @@
 
 .About .introduction {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .About h1 {
-  font-size: 62px;
+  font-size: 52px;
 }
 .About h3 {
-  font-size: 37px;
+  font-size: 27px;
 }
 
 .About .title {

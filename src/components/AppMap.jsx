@@ -56,7 +56,10 @@ class AppMap extends React.PureComponent {
     }
   }
 
-  open = (item) => this.setState({ open: true, selectedBeer: item });
+  open = (item) => {
+    console.log("open");
+    this.setState({ open: true, selectedBeer: item });
+  };
   close = () => this.setState({ open: false });
 
   render() {
@@ -105,24 +108,21 @@ class AppMap extends React.PureComponent {
           style="mapbox://styles/mapbox/streets-v11"
           zoom={[12]}
           containerStyle={{
-            top: 0,
-            left: 0,
-            bottom: 75,
-            right: 0,
-            position: "absolute",
+            width: "100%",
+            height: "100%",
           }}
           center={[this.state.lng, this.state.lat]}
           onClick={(p1, p2) => this.props.onClickMap(p1, p2)}
         >
           {beerLayer}
           {userLayer}
-        </Map>
-        {this.state.open && (
+          {this.state.open && (
           <Popup
             properties={{ ...this.state.selectedBeer }}
             onCancel={this.close}
           />
         )}
+        </Map>
       </>
     );
   }

@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import "../styles/About.css";
 
 const About = (props) => {
-  // const { context } = props;
+  const { context } = props;
   // console.log(context);
 
   return (
-    <div className="About">
+    <div className="About uppperScreen">
       <div className="introduction">
-        <h1>Hey User!</h1>
-        {/* {context.user.firstName && <h1>Hey {context.user.firstName}!</h1>} */}
+        {!context.user.firstName && <h1>Hey User!</h1>}
+        {context.user.firstName && <h1>Hey {context.user.firstName}!</h1>}
         <h3>Welcome to CosMousse!</h3>
         <p>Where every beer-lover can keep track of their fun times!</p>
       </div>
@@ -39,7 +39,7 @@ const About = (props) => {
           </h4>
         </Link>
       </div>
-      <NavMain page="about"/>
+      <NavMain page="about" />
     </div>
   );
 };
