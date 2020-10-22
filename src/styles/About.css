@@ -1,12 +1,10 @@
 .About {
-  background-image: url("/.././Abstract_Background_with_Blue_Triangles.jpg");
+  background-image: url("/.././beer_background.jpg");
   padding: 50px 5px 100px 5px;
 }
 
 .About .introduction {
   text-align: center;
-  /* margin: 0px; */
-  /* background-image: url("https://envato-shoebox-0.imgix.net/f309/08f0-c751-4da9-ba9f-62c7a94fd21f/_K4A7247.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=1600&s=15745df6fd33f570f570abb0259ca7d0"); */
 }
 
 .About h1 {
@@ -18,12 +16,12 @@
 
 .About .title {
   font-size: 1.5em;
-  color: wheat;
+  /* color: wheat; */
 }
 
 .About p {
   font-size: 1.2em;
-  color: whitesmoke;
+  /* color: whitesmoke; */
 }
 
 .About .values-container {

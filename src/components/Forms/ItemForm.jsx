@@ -176,7 +176,7 @@ export class ItemForm extends Component {
 
   render() {
     // console.log(this.context);
-    // console.log(">>>>>", this.props.id);
+    console.log(">>>>>", this.props.id);
     // console.log("=======", this.props.coordinates);
     return (
       <div className="background-item-form">
@@ -277,76 +277,15 @@ export class ItemForm extends Component {
               <label className="label" htmlFor="rating">
                 Rating
               </label>
-              {/* <div className="ratings-over-container"> */}
               <div>
                 <Rating
                   icon="star"
                   size="massive"
-                  defaultRating={this.state.rating}
+                  rating={this.state.rating}
                   value={this.state.rating}
                   onRate={(evt, rating) => this.handleRate(evt, rating)}
                   maxRating={5}
                 />
-                {/* <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="0"
-                    defaultChecked={this.state.rating === "0"}
-                  />
-                  0
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="1"
-                    defaultChecked={this.state.rating === "1"}
-                  />
-                  1
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="2"
-                    defaultChecked={this.state.rating === "2"}
-                  />
-                  2
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="3"
-                    defaultChecked={this.state.rating === "3"}
-                  />
-                  3
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="4"
-                    defaultChecked={this.state.rating === "4"}
-                  />
-                  4
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className="rate"
-                    name="rating"
-                    value="5"
-                    defaultChecked={this.state.rating === "5"}
-                  />
-                  5
-                  */}
-                {/* </div> */}
               </div>
               <br></br>
               <label className="label" htmlFor="description">

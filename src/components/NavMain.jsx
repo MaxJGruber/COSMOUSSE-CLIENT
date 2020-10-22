@@ -11,7 +11,6 @@ import "../styles/NavMain.css";
 
 const NavMain = (props) => {
   const { context } = props;
-  // console.log(props.page);
   switch (props.page) {
     case "loglist":
       return (
@@ -25,16 +24,7 @@ const NavMain = (props) => {
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <Avatar
-                  alt="User"
-                  src={context.user.profileImage}
-                  // className={classes.large}
-                />
-                {/* <img
-                  className="profileImage"
-                  src={context.user.profileImage}
-                  alt="you"
-                /> */}
+                <Avatar alt="User" src={context.user.profileImage} />
               </NavLink>
             </React.Fragment>
           )}
@@ -49,20 +39,11 @@ const NavMain = (props) => {
       );
     case "about":
       return (
-        <nav className="NavMain">
+        <nav className="NavMain about-page">
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <Avatar
-                  alt="User"
-                  src={context.user.profileImage}
-                  // className={classes.large}
-                />
-                {/* <img
-                  className="profileImage"
-                  src={context.user.profileImage}
-                  alt="you"
-                /> */}
+                <Avatar alt="User" src={context.user.profileImage} />
               </NavLink>
             </React.Fragment>
           )}
@@ -87,10 +68,7 @@ const NavMain = (props) => {
           {context.isLoggedIn && (
             <React.Fragment>
               <NavLink to="/profile">
-                <Avatar
-                  alt="User"
-                  src={context.user.profileImage}
-                />
+                <Avatar alt="User" src={context.user.profileImage} />
               </NavLink>
             </React.Fragment>
           )}
