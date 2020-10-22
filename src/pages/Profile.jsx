@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../components/Auth/UserContext";
+import { Button, Confirm } from "semantic-ui-react";
+
 class Profile extends React.Component {
   static contextType = UserContext;
 
@@ -14,6 +16,7 @@ class Profile extends React.Component {
     firstName: "",
     lastName: "",
     profileImage: "",
+    open: false,
   };
 
   componentDidMount() {
@@ -23,6 +26,9 @@ class Profile extends React.Component {
       profileImage: this.context.user.profileImage,
     });
   }
+
+  open = () => this.setState({ open: true });
+  close = () => this.setState({ open: false });
 
   handlePlace = (place) => {
     const location = place.geometry;
@@ -111,15 +117,35 @@ class Profile extends React.Component {
             </Link>
             <br />
             <div className="option-btns">
-              <button id="delete" onClick={this.deleteAccount}>
+              <Button
+                type="button"
+                id="delete"
+                className="button"
+                onClick={this.open}
+              >
                 <FontAwesomeIcon icon={faTrashAlt} />
-              </button>{" "}
+              </Button>
+              <Confirm
+                open={this.state.open}
+                onCancel={this.close}
+                onConfirm={this.deleteAccount}
+              />{" "}
               <button id="save" onClick={this.handleEdit}>
                 Save Changes
               </button>{" "}
-              <button id="logout" onClick={this.sessionLogout}>
+              <Button
+                type="button"
+                id="logout"
+                className="button"
+                onClick={this.open}
+              >
                 <FontAwesomeIcon icon={faSignOutAlt} />
-              </button>
+              </Button>
+              <Confirm
+                open={this.state.open}
+                onCancel={this.close}
+                onConfirm={this.sessionLogout}
+              />
             </div>
           </form>
         </div>

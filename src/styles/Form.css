@@ -88,10 +88,6 @@
   color: purple;
 }
 
-.Form #delete {
-  background-color: rgb(221, 76, 76);
-}
-
 .Form .question {
   margin-top: 10px;
 }
@@ -101,6 +97,34 @@
 }
 
 .Form button {
+  max-width: 200px;
+  padding: 10px 12px;
+  margin: 10px 4px;
+  font-size: 1.25rem;
+  background-color: dodgerblue;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
+}
+
+.Form #delete {
+  max-width: 200px;
+  padding: 10px 12px;
+  margin: 10px 4px;
+  font-size: 1.25rem;
+  background-color: rgb(221, 76, 76);
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
+}
+
+.Form #logout {
   max-width: 200px;
   padding: 10px 12px;
   margin: 10px 4px;

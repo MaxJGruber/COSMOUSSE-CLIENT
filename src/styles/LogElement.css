@@ -1,15 +1,15 @@
 .LogList {
-  background-color: rgb(201, 199, 199);
+  background-color: whitesmoke;
   height: 800px;
-  padding: 15px 0;
+  padding: 15px 5px;
 }
 
 .LogElement {
-  height: 100px;
+  height: 120px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: rgb(196, 227, 248);
+  background-color: rgb(224, 239, 250);
   border: 1px solid grey;
   justify-content: space-between;
   align-items: center;
@@ -20,9 +20,9 @@
 
 .LogElement button {
   max-width: 200px;
-  padding: 12px 12px;
-  height: 45px;
-  width: 45px;
+  padding: 10px 10px;
+  height: 35px;
+  width: 35px;
   margin: 10px;
   font-size: 1.25rem;
   background-color: dodgerblue;
@@ -44,6 +44,20 @@
 .LogElement #delete {
   background-color: red;
   color: aliceblue;
+  max-width: 200px;
+  padding: 10px 10px;
+  height: 35px;
+  width: 35px;
+  margin: 10px;
+  font-size: 1.25rem;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 
 .LogElement #edit {
@@ -56,6 +70,14 @@
   align-items: center;
   text-align: center;
   margin-left: 20px;
+  /* border-radius: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
+  background-color: dodgerblue; */
+}
+
+.LogElement .beer-info * {
+  padding: 0;
+  margin: 0;
 }
 
 .LogElement .options {
@@ -64,6 +86,6 @@
 
 .LogElement .fa-edit,
 .LogElement .fa-trash-alt {
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
 }

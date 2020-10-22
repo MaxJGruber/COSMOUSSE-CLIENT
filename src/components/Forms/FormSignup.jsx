@@ -9,10 +9,18 @@ import "../../styles/Form.css";
 const validateSchema = ({ errors, ...rest }) => {
   const err = {};
   for (let key in rest) {
-    if (rest[key] === "") err[key] = true;
+    console.log(rest[key]);
+    if (rest[key] === "") {
+      err[key] = true;
+    } else if (getAge(rest[key]) < 18) {
+      err[key] = true;
+    }
   }
   return err;
 };
+
+const getAge = (birthDate) =>
+  Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -20,6 +28,9 @@ class FormSignup extends Component {
   state = {
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    birthday: "",
     errors: {},
   };
 
@@ -45,6 +56,9 @@ class FormSignup extends Component {
       this.setState({ errors: errors });
       return;
     }
+
+    // const birth = getAge(this.state.birthday);
+    // if()
 
     const fd = new FormData();
 
@@ -82,9 +96,9 @@ class FormSignup extends Component {
               name="firstName"
               onChange={this.handleChange}
             />
-            {!this.state.firstName && (
+            {this.state.errors.firstName && (
               <Label basic color="red" pointing>
-                Please enter a value
+                Please enter your first name
               </Label>
             )}
             <label htmlFor="lastName">Last Name</label>
@@ -94,9 +108,9 @@ class FormSignup extends Component {
               name="lastName"
               onChange={this.handleChange}
             />
-            {!this.state.errors.lastName && (
+            {this.state.errors.lastName && (
               <Label basic color="red" pointing>
-                Please enter a value
+                Please enter your last name
               </Label>
             )}
             <label htmlFor="email">Email</label>
@@ -108,7 +122,7 @@ class FormSignup extends Component {
             />
             {this.state.errors.email && (
               <Label basic color="red" pointing>
-                Please enter a value
+                Please enter an email address
               </Label>
             )}
             <label htmlFor="password">Password</label>
@@ -120,7 +134,7 @@ class FormSignup extends Component {
             />
             {this.state.errors.password && (
               <Label basic color="red" pointing>
-                Please enter a value
+                Please enter a password
               </Label>
             )}
             <label htmlFor="birthday">Birthday</label>
@@ -130,16 +144,16 @@ class FormSignup extends Component {
               name="birthday"
               onChange={this.handleChange}
             />
-            {!this.state.birthday && (
+            {this.state.errors.birthday && (
               <Label basic color="red" pointing>
-                Please enter a value
+                You must be 18 or over to create an account
               </Label>
             )}
-            {this.state.birthday < 18 && (
+            {/* {this.state.birthday < 18 && (
               <Label basic color="red" pointing>
                 You must be over 18 to create an account
               </Label>
-            )}
+            )} */}
             <button>Create Account</button>
             <p className="question">
               Already have an account ?{" "}

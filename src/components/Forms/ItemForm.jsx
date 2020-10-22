@@ -8,6 +8,7 @@ import { buildFormData } from "../../utils";
 import { UserContext } from "../Auth/UserContext";
 import { Rating } from "semantic-ui-react";
 import { Checkbox } from "semantic-ui-react";
+import { Button, Confirm } from "semantic-ui-react";
 import axios from "axios";
 import "../../styles/Form.css";
 
@@ -24,6 +25,7 @@ export class ItemForm extends Component {
     added_by: "",
     price: null,
     priceHH: null,
+    open: false,
   };
 
   componentDidMount() {
@@ -127,6 +129,9 @@ export class ItemForm extends Component {
     // console.log(">>>>>>", data.rating);
     this.setState({ rating: data.rating });
   };
+
+  open = () => this.setState({ open: true });
+  close = () => this.setState({ open: false });
 
   createItem = () => {
     if (!this.state.type) {
@@ -355,9 +360,19 @@ export class ItemForm extends Component {
               />
             </div>
             <div className="option-btns">
-              <button type="button" id="delete" onClick={this.deleteItem}>
+              <Button
+                type="button"
+                id="delete"
+                className="button"
+                onClick={this.open}
+              >
                 <FontAwesomeIcon icon={faTrashAlt} />
-              </button>{" "}
+              </Button>{" "}
+              <Confirm
+                open={this.state.open}
+                onCancel={this.close}
+                onConfirm={this.deleteItem}
+              />
               <button id="save" onClick={this.handleSubmit}>
                 Save Changes
               </button>
