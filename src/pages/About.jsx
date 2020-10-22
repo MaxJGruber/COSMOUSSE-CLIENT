@@ -3,6 +3,7 @@ import { withUser } from "../components/Auth/withUser.jsx";
 import NavMain from "../components/NavMain";
 import { Link } from "react-router-dom";
 import "../styles/About.css";
+import "../styles/global.css";
 
 const About = (props) => {
   const { context } = props;

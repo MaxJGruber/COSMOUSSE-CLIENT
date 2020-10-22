@@ -8,6 +8,7 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../components/Auth/UserContext";
 import { Button, Confirm } from "semantic-ui-react";
+import "../styles/global.css";
 
 class Profile extends React.Component {
   static contextType = UserContext;

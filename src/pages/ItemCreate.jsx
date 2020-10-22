@@ -1,6 +1,7 @@
 import React from "react";
 import ItemForm from "../components/Forms/ItemForm";
 import NavMain from "../components/NavMain";
+import "../styles/global.css";
 
 const ItemCreate = (props) => {
   return (

@@ -3,6 +3,7 @@ import LogElement from "../components/LogElement";
 import API from "../api/apiHandler";
 import NavMain from "../components/NavMain";
 import "../styles/LogElement.css";
+import "../styles/global.css";
 
 class Loglist extends React.Component {
   state = {
