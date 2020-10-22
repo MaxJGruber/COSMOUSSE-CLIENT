@@ -29,7 +29,7 @@ class App extends React.Component {
     // console.log(features[0], "featurres");
     // console.log(UserContext);
     if (this.context.user === null) {
-      this.setState({ error: true });
+      this.props.history.push(`/signup`);
     } else if (features[0] === undefined) {
       console.log("You can't place anything here!");
       // } else if (features[0].source === "beers") {
@@ -50,9 +50,6 @@ class App extends React.Component {
     // console.log(context);
     return (
       <div className="App">
-    
-
-      
         <Switch>
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
