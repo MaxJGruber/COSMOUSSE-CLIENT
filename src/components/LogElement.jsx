@@ -54,6 +54,7 @@ class LogElement extends React.Component {
             <Confirm
               open={this.state.open}
               onCancel={this.close}
+              onClick={this.close}
               onConfirm={() => this.props.deleteItem(this.props.id)}
             />
           </div>
