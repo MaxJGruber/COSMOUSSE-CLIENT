@@ -10,8 +10,8 @@ const About = (props) => {
   // console.log(context);
 
   return (
-    <>
-      <div className="About uppperScreen">
+    <div className="upperScreen">
+      <div className="About">
         <div className="introduction">
           <h1>Hey User!</h1>
           {/* {context.user.firstName && <h1>Hey {context.user.firstName}!</h1>} */}
@@ -43,7 +43,7 @@ const About = (props) => {
         </div>
       </div>
       <NavMain page="about" />
-    </>
+    </div>
   );
 };
 

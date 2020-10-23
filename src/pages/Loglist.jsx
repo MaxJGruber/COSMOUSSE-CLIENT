@@ -41,6 +41,7 @@ class Loglist extends React.Component {
               />
             );
           })}
+          {!this.state.items.length && <h1>You have no items in your list</h1>}
         </div>
         <NavMain page="loglist" />
       </>

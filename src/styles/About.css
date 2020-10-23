@@ -1,12 +1,12 @@
 .About {
   background-image: url("/.././beer_background.jpg");
-  padding: 50px 5px 100px 5px;
+  padding: 100px 10px 0 10px;
   height: 100%;
 }
 
 .About .introduction {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10vh;
 }
 
 .About h1 {
@@ -33,10 +33,11 @@
 .About .hook {
   text-align: center;
   margin: 30px auto;
-  background-color: teal;
+  background-color: rgb(180, 118, 3);
   color: aliceblue;
   border-radius: 2em;
   padding: 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
 }
 
 .About a {

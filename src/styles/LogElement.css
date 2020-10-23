@@ -21,6 +21,11 @@
   padding-bottom: 80px;
 }
 
+.LogList h1 {
+  text-align: center;
+  padding-top: 45vh;
+}
+
 .LogElement {
   height: 120px;
   width: 100%;
