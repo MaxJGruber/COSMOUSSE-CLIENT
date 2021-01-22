@@ -9,7 +9,7 @@ Keep track of the very best of memories by revisiting your inventory.
 #Update
 Update your logs based on renewed experiences (prices changes, change of mind, etc)
 
-COSMOUSSE was created in MERN (MongoDB, Express.js, React.js, Node.js) Stack, in 10 days, by ME alone, as a final project for my 
+COSMOUSSE was created in MERN (MongoDB, Express.js, React.js, Node.js) Stack using JavaScript, in 10 days, by ME alone, as a final project for my 
 Web Development Bootcamp at Ironhack Paris.
 
 Here is the link to the demo video of COSMOUSSE!
