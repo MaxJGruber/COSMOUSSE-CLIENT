@@ -3,7 +3,7 @@ import FormSignin from "../components/Forms/FormSignin";
 import NavMain from "../components/NavMain";
 import "../styles/global.css";
 
-const Signin = (props) => {
+const Signin = () => {
   return (
     <div className="upperScreen">
       <FormSignin />

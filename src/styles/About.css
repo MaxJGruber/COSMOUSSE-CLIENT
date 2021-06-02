@@ -1,6 +1,5 @@
 .About {
-  background-image: url("/.././beer_background.jpg");
-  padding: 5vh 10px 0 10px;
+  background-image: url("../assets/beer_background.jpg");
   height: 100%;
 }
 

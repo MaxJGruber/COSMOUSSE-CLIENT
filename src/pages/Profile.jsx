@@ -52,7 +52,6 @@ class Profile extends React.Component {
         : event.target.value;
 
     const key = event.target.name;
-    // console.log(key, value);
 
     this.setState({ [key]: value });
   };
@@ -80,7 +79,6 @@ class Profile extends React.Component {
   };
 
   render() {
-    // console.log(this.context);
     return (
       <div className="upperScreen">
         <div className="background-form edit">

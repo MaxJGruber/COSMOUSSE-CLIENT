@@ -14,7 +14,6 @@ class Loglist extends React.Component {
   componentDidMount = () => {
     API.getItems("/items")
       .then((dbRes) => {
-        // console.log(dbRes);
         this.setState({ items: dbRes });
       })
       .catch((error) => console.log(error));

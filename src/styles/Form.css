@@ -1,6 +1,5 @@
 .background-form {
   background-color: #aeeffd;
-  /* background-size: cover; */
   padding-top: 65px;
   height: 100%;
 }
@@ -9,15 +8,7 @@
 
 .background-item-form {
   background-color: #aeeffd;
-  /* background-size: cover; */
-  /* padding: 65px 0; */
-  /* height: 800px; */
   padding: 100px 10px 100px 10px;
-  /* margin: 5% auto; */
-}
-
-.signin {
-  padding-top: 90%;
 }
 
 .signup {
@@ -31,8 +22,7 @@
 .form-container {
   background-color: #ededed;
   border-radius: 1rem;
-  /* padding: 5% auto; */
-  margin: 10% auto;
+  margin: 50% auto;
   width: 85%;
   padding: 10px;
 }
@@ -40,10 +30,8 @@
 /* FOR ITEM FORM  */
 
 .item-form-container {
-  /* padding-bottom: 100px; */
   background-color: #ededed;
   border-radius: 1rem;
-  /* padding: 5% auto; */
   margin: auto;
   width: 85%;
   padding: 10px;
